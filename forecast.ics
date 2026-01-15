@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Weather Forecast Calendar//GitHub Pages//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Daily Weather Forecast
+X-WR-TIMEZONE:Europe/Athens
+X-WR-CALDESC:Daily weather forecast for Athens
+BEGIN:VEVENT
+UID:weather-20260115@github-pages
+DTSTAMP:20260115T060000Z
+DTSTART;VALUE=DATE:20260115
+DTEND;VALUE=DATE:20260116
+SUMMARY:Today's Weather — Athens
+DESCRIPTION:Temperature: 8°C – 16°C\nPrecipitation: 0%\nWind: 5 km/h\n\nW
+ isit the weather widget: https://USERNAME.github.io/REPO/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

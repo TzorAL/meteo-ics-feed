@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast Widget</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .widget-container {
+            padding: 20px;
+        }
+        
+        .info-box {
+            background: #f0f4ff;
+            border: 1px solid #d0d8ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .info-box strong {
+            color: #667eea;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 13px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 12px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        
+        .btn-save {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-save:hover {
+            background: #5568d3;
+        }
+        
+        .btn-clear {
+            background: #f5f5f5;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-clear:hover {
+            background: #efefef;
+        }
+        
+        .preview-section {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        .preview-section h3 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        #widget-display {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #f9f9f9;
+            padding: 10px;
+            text-align: center;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        #widget-display iframe {
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        .metadata {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+        
+        .metadata strong {
+            color: #667eea;
+        }
+        
+        .status {
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .footer {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            
+            body {
+                min-height: 100dvh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Weather Forecast Widget</h1>
+            <p>Powered by meteo.gr</p>
+        </div>
+        
+        <div class="widget-container">
+            <!-- Setup Instructions -->
+            <div class="info-box">
+                <strong>📋 Setup:</strong> Paste the <code>&lt;iframe&gt;</code> code that meteo.gr sent you in the textarea below, then click "Save & Display".
+            </div>
+            
+            <!-- Status Message -->
+            <div id="status" class="status"></div>
+            
+            <!-- Form to Add Widget -->
+            <div class="form-group">
+                <label for="iframe-input">Paste meteo.gr iframe code:</label>
+                <textarea id="iframe-input" placeholder='e.g., <iframe src="https://www.meteo.gr/..." width="300" height="500"></iframe>'></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn-save" onclick="saveIframe()">Save & Display</button>
+                <button class="btn-clear" onclick="clearIframe()">Clear</button>
+            </div>
+            
+            <!-- Widget Display -->
+            <div class="preview-section">
+                <h3>📺 Preview</h3>
+                <div id="widget-display">
+                    No widget loaded yet. Paste the iframe code above.
+                </div>
+            </div>
+            
+            <!-- Metadata -->
+            <div class="metadata" id="metadata" style="display: none;">
+                <strong>📊 Widget Info:</strong><br>
+                <div id="metadata-content"></div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Weather data provided by meteo.gr</p>
+            <p style="margin-top: 8px; font-size: 11px;">
+                Calendar feed: <code>forecast.ics</code>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Load iframe from localStorage on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIframe();
+        });
+        
+        // Save iframe code
+        function saveIframe() {
+            const code = document.getElementById('iframe-input').value.trim();
+            
+            if (!code) {
+                showStatus('Please paste iframe code', 'error');
+                return;
+            }
+            
+            if (!code.includes('<iframe')) {
+                showStatus('Invalid: Code does not contain <iframe> tag', 'error');
+                return;
+            }
+            
+            // Store in localStorage
+            localStorage.setItem('meteo-iframe', code);
+            
+            // Extract and store metadata
+            const metadata = extractMetadata(code);
+            localStorage.setItem('meteo-metadata', JSON.stringify(metadata));
+            
+            showStatus('✓ Widget saved successfully', 'success');
+            displayIframe(code);
+            displayMetadata(metadata);
+        }
+        
+        // Load iframe from localStorage
+        function loadIframe() {
+            const code = localStorage.getItem('meteo-iframe');
+            const metadata = localStorage.getItem('meteo-metadata');
+            
+            if (code) {
+                document.getElementById('iframe-input').value = code;
+                displayIframe(code);
+            }
+            
+            if (metadata) {
+                displayMetadata(JSON.parse(metadata));
+            }
+        }
+        
+        // Display iframe in preview
+        function displayIframe(code) {
+            const display = document.getElementById('widget-display');
+            display.innerHTML = code;
+        }
+        
+        // Extract metadata from iframe
+        function extractMetadata(iframeCode) {
+            const metadata = {};
+            
+            // Extract src
+            const srcMatch = iframeCode.match(/src\s*=\s*["']([^"']+)["']/i);
+            if (srcMatch) {
+                metadata.src = srcMatch[1];
+                // Extract domain from src
+                const urlMatch = srcMatch[1].match(/https?:\/\/([^\/]+)/);
+                if (urlMatch) {
+                    metadata.domain = urlMatch[1];
+                }
+            }
+            
+            // Extract width
+            const widthMatch = iframeCode.match(/width\s*=\s*["']?(\d+)["']?/i);
+            if (widthMatch) {
+                metadata.width = widthMatch[1];
+            }
+            
+            // Extract height
+            const heightMatch = iframeCode.match(/height\s*=\s*["']?(\d+)["']?/i);
+            if (heightMatch) {
+                metadata.height = heightMatch[1];
+            }
+            
+            // Extract title/name from src if available
+            const titleMatch = iframeCode.match(/[?&]city=([^&\s]+)/i);
+            if (titleMatch) {
+                metadata.city = decodeURIComponent(titleMatch[1]);
+            }
+            
+            // Extract class
+            const classMatch = iframeCode.match(/class\s*=\s*["']([^"']+)["']/i);
+            if (classMatch) {
+                metadata.class = classMatch[1];
+            }
+            
+            // Extract id
+            const idMatch = iframeCode.match(/id\s*=\s*["']([^"']+)["']/i);
+            if (idMatch) {
+                metadata.id = idMatch[1];
+            }
+            
+            // Capture timestamp
+            metadata.savedAt = new Date().toLocaleString();
+            
+            return metadata;
+        }
+        
+        // Display extracted metadata
+        function displayMetadata(metadata) {
+            if (!metadata || Object.keys(metadata).length === 0) {
+                document.getElementById('metadata').style.display = 'none';
+                return;
+            }
+            
+            const metadataSection = document.getElementById('metadata');
+            const contentDiv = document.getElementById('metadata-content');
+            
+            let html = '';
+            
+            if (metadata.domain) {
+                html += `<div><strong>Domain:</strong> ${escapeHtml(metadata.domain)}</div>`;
+            }
+            if (metadata.src) {
+                html += `<div><strong>Source:</strong> <code style="background: #fff; padding: 2px 4px; border-radius: 2px; font-size: 11px;">${escapeHtml(metadata.src.substring(0, 60))}${metadata.src.length > 60 ? '...' : ''}</code></div>`;
+            }
+            if (metadata.city) {
+                html += `<div><strong>City:</strong> ${escapeHtml(metadata.city)}</div>`;
+            }
+            if (metadata.width || metadata.height) {
+                html += `<div><strong>Dimensions:</strong> ${metadata.width || 'auto'} × ${metadata.height || 'auto'}</div>`;
+            }
+            if (metadata.class) {
+                html += `<div><strong>Class:</strong> ${escapeHtml(metadata.class)}</div>`;
+            }
+            if (metadata.id) {
+                html += `<div><strong>ID:</strong> ${escapeHtml(metadata.id)}</div>`;
+            }
+            if (metadata.savedAt) {
+                html += `<div><strong>Saved:</strong> ${escapeHtml(metadata.savedAt)}</div>`;
+            }
+            
+            contentDiv.innerHTML = html;
+            metadataSection.style.display = 'block';
+        }
+        
+        // Clear iframe
+        function clearIframe() {
+            if (confirm('Clear the stored widget?')) {
+                localStorage.removeItem('meteo-iframe');
+                localStorage.removeItem('meteo-metadata');
+                document.getElementById('iframe-input').value = '';
+                document.getElementById('widget-display').innerHTML = 'No widget loaded yet. Paste the iframe code above.';
+                document.getElementById('metadata').style.display = 'none';
+                showStatus('Widget cleared', 'success');
+            }
+        }
+        
+        // Show status message
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            
+            // Auto-hide after 3 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    status.className = 'status';
+                }, 3000);
+            }
+        }
+        
+        // Escape HTML to prevent injection
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
+
