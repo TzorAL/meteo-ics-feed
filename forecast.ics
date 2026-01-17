@@ -7,86 +7,86 @@ X-WR-CALNAME:Daily Weather Forecast - Athens
 X-WR-TIMEZONE:Europe/Athens
 X-WR-CALDESC:Daily weather forecast
 BEGIN:VEVENT
-UID:weather-20260116@github-pages
-DTSTAMP:20260116T044021Z
-DTSTART;VALUE=DATE:20260116
-DTEND;VALUE=DATE:20260117
-SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 4.7°C – 15.5°C\\nPrecipitation Probability: 0%
- \\nWind: 7.1km/h\\n\nVisit the weather widget: https://USERNAME.github.io/
- REPO/
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:weather-20260117@github-pages
-DTSTAMP:20260116T044021Z
+DTSTAMP:20260117T043231Z
 DTSTART;VALUE=DATE:20260117
 DTEND;VALUE=DATE:20260118
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 4.0°C – 10.4°C\\nPrecipitation Probability: 5%
- \\nWind: 23.7km/h\\n\nVisit the weather widget: https://USERNAME.github.io
- /REPO/
+DESCRIPTION:Temperature: 4.7°C – 10.4°C\\nPrecipitation Probability: 15
+ %\\nWind: 23.3km/h\\n\nVisit the weather widget: https://USERNAME.github.i
+ o/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260118@github-pages
-DTSTAMP:20260116T044021Z
+DTSTAMP:20260117T043231Z
 DTSTART;VALUE=DATE:20260118
 DTEND;VALUE=DATE:20260119
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 3.8°C – 7.5°C\\nPrecipitation Probability: 0%\
- \nWind: 21.1km/h\\n\nVisit the weather widget: https://USERNAME.github.io/
+DESCRIPTION:Temperature: 4.3°C – 7.6°C\\nPrecipitation Probability: 0%\
+ \nWind: 20.2km/h\\n\nVisit the weather widget: https://USERNAME.github.io/
  REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260119@github-pages
-DTSTAMP:20260116T044021Z
+DTSTAMP:20260117T043231Z
 DTSTART;VALUE=DATE:20260119
 DTEND;VALUE=DATE:20260120
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 3.3°C – 6.7°C\\nPrecipitation Probability: 0%\
- \nWind: 22.4km/h\\n\nVisit the weather widget: https://USERNAME.github.io/
- REPO/
+DESCRIPTION:Temperature: 3.6°C – 7.0°C\\nPrecipitation Probability: 0%\
+ \nPrecipitation: 0.2mm\\nWind: 23.4km/h\\n\nVisit the weather widget: http
+ s://USERNAME.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260120@github-pages
-DTSTAMP:20260116T044021Z
+DTSTAMP:20260117T043231Z
 DTSTART;VALUE=DATE:20260120
 DTEND;VALUE=DATE:20260121
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 5.1°C – 9.6°C\\nPrecipitation Probability: 48%
- \\nWind: 22.5km/h\\n\nVisit the weather widget: https://USERNAME.github.io
- /REPO/
+DESCRIPTION:Temperature: 5.8°C – 8.7°C\\nPrecipitation Probability: 59%
+ \\nPrecipitation: 4.2mm\\nWind: 17.3km/h\\n\nVisit the weather widget: htt
+ ps://USERNAME.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260121@github-pages
-DTSTAMP:20260116T044021Z
+DTSTAMP:20260117T043231Z
 DTSTART;VALUE=DATE:20260121
 DTEND;VALUE=DATE:20260122
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 6.5°C – 12.5°C\\nPrecipitation Probability: 72
- %\\nPrecipitation: 13.8mm\\nWind: 13.5km/h\\n\nVisit the weather widget: h
+DESCRIPTION:Temperature: 6.5°C – 13.1°C\\nPrecipitation Probability: 83
+ %\\nPrecipitation: 68.4mm\\nWind: 20.4km/h\\n\nVisit the weather widget: h
  ttps://USERNAME.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260122@github-pages
-DTSTAMP:20260116T044021Z
+DTSTAMP:20260117T043231Z
 DTSTART;VALUE=DATE:20260122
 DTEND;VALUE=DATE:20260123
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 5.6°C – 14.7°C\\nPrecipitation Probability: 35
- %\\nWind: 9.8km/h\\n\nVisit the weather widget: https://USERNAME.github.io
+DESCRIPTION:Temperature: 4.2°C – 13.6°C\\nPrecipitation Probability: 29
+ %\\nWind: 7.9km/h\\n\nVisit the weather widget: https://USERNAME.github.io
  /REPO/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260123@github-pages
+DTSTAMP:20260117T043231Z
+DTSTART;VALUE=DATE:20260123
+DTEND;VALUE=DATE:20260124
+SUMMARY:Today's Weather — Athens
+DESCRIPTION:Temperature: 3.6°C – 14.3°C\\nPrecipitation Probability: 10
+ %\\nPrecipitation: 0.6mm\\nWind: 6.1km/h\\n\nVisit the weather widget: htt
+ ps://USERNAME.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
