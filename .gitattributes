@@ -1,0 +1,2 @@
+# Force correct MIME type for ICS files on GitHub Pages
+*.ics text eol=crlf

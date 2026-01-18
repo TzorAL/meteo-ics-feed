@@ -209,7 +209,99 @@
             text-align: center;
         }
         
-        @media (max-width: 600px) {
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 0 12px 0;
+            padding-top: 15px;
+            border-top: 2px solid #667eea;
+        }
+        
+        .steps {
+            list-style: none;
+            counter-reset: step;
+        }
+        
+        .steps li {
+            counter-increment: step;
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .steps li:before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border-left: 3px solid #667eea;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 11px;
+            word-break: break-all;
+            margin: 8px 0;
+            user-select: all;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .calendar-item {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 12px;
+        }
+        
+        .calendar-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        code {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
             .container {
                 border-radius: 0;
                 box-shadow: none;
@@ -218,6 +310,10 @@
             body {
                 min-height: 100dvh;
             }
+            
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -225,226 +321,79 @@
     <div class="container">
         <div class="header">
             <h1>Weather Forecast Widget</h1>
-            <p>Powered by meteo.gr</p>
+            <p>Powered by <a href="https://www.meteo.gr/index-en.cfm" target="_blank" style="color: white; font-weight: 500;">meteo.gr</a></p>
         </div>
         
         <div class="widget-container">
-            <!-- Setup Instructions -->
+            <!-- Subscribe to Calendar Feed -->
             <div class="info-box">
-                <strong>📋 Setup:</strong> Paste the <code>&lt;iframe&gt;</code> code that meteo.gr sent you in the textarea below, then click "Save & Display".
+                <strong>📅 Subscribe to Weather Calendar:</strong> Add this URL to your calendar app to receive daily weather forecasts.
             </div>
             
-            <!-- Status Message -->
-            <div id="status" class="status"></div>
+            <h2 class="section-title">🚀 How to Subscribe</h2>
             
-            <!-- Form to Add Widget -->
-            <div class="form-group">
-                <label for="iframe-input">Paste meteo.gr iframe code:</label>
-                <textarea id="iframe-input" placeholder='e.g., <iframe src="https://www.meteo.gr/..." width="300" height="500"></iframe>'></textarea>
-            </div>
+            <ol class="steps">
+                <li>
+                    <strong>Copy the Calendar Feed URL:</strong>
+                    <div class="code-block">https://tzoral.github.io/meteo-ics-feed/forecast.ics</div>
+                </li>
+                <li>
+                    <strong>Open Your Calendar App</strong> and follow the steps for your platform:
+                    <div class="calendar-grid">
+                        <div class="calendar-item">
+                            <strong>🔵 Google Calendar</strong>
+                            Settings → Add other calendars → From URL → Paste
+                        </div>
+                        <div class="calendar-item">
+                            <strong>🍎 Apple Calendar</strong>
+                            File → Import → Paste URL
+                        </div>
+                        <div class="calendar-item">
+                            <strong>📧 Outlook</strong>
+                            Add calendar → Subscribe from web → Paste URL
+                        </div>
+                        <div class="calendar-item">
+                            <strong>🌐 Other Apps</strong>
+                            Look for "Subscribe" or "Add from URL" option
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <strong>Done!</strong> Daily weather forecasts will appear in your calendar automatically.
+                </li>
+            </ol>
             
-            <div class="button-group">
-                <button class="btn-save" onclick="saveIframe()">Save & Display</button>
-                <button class="btn-clear" onclick="clearIframe()">Clear</button>
-            </div>
-            
-            <!-- Widget Display -->
-            <div class="preview-section">
-                <h3>📺 Preview</h3>
-                <div id="widget-display">
-                    No widget loaded yet. Paste the iframe code above.
+            <h2 class="section-title">📊 What to Expect</h2>
+            <div class="info-box">
+                <strong>Daily Updates:</strong> Every morning at 06:00 Athens time, you'll receive:
+                <ul style="margin-top: 8px; margin-left: 16px; font-size: 13px;">
+                    <li>Minimum & Maximum Temperature</li>
+                    <li>Precipitation Probability</li>
+                    <li>Wind Speed</li>
+                    <li>7-day forecast (automatically)</li>
+                </ul>
+                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #d0d8ff; font-size: 12px; color: #666;">
+                    Each event shows detailed weather information in the event description.
                 </div>
             </div>
             
-            <!-- Metadata -->
-            <div class="metadata" id="metadata" style="display: none;">
-                <strong>📊 Widget Info:</strong><br>
-                <div id="metadata-content"></div>
+            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <h2 class="section-title">🎨 Weather Widget</h2>
+            <div id="widget-display" style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 6px;">
+                <!-- Replace this comment with your meteo.gr iframe code -->
+                <!-- Example: <iframe src="https://www.meteo.gr/..." width="300" height="500"></iframe> -->
+                <p style="color: #999; font-size: 13px;">Widget will appear here. Edit index.html and paste your meteo.gr iframe in the widget-display div.</p>
             </div>
         </div>
         
         <div class="footer">
-            <p>Weather data provided by meteo.gr</p>
-            <p style="margin-top: 8px; font-size: 11px;">
-                Calendar feed: <code>forecast.ics</code>
-            </p>
+            <p>Calendar feed: <a href="https://tzoral.github.io/meteo-ics-feed/forecast.ics" style="color: #667eea;">forecast.ics</a></p>
         </div>
     </div>
 
     <script>
-        // Load iframe from localStorage on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            loadIframe();
-        });
-        
-        // Save iframe code
-        function saveIframe() {
-            const code = document.getElementById('iframe-input').value.trim();
-            
-            if (!code) {
-                showStatus('Please paste iframe code', 'error');
-                return;
-            }
-            
-            if (!code.includes('<iframe')) {
-                showStatus('Invalid: Code does not contain <iframe> tag', 'error');
-                return;
-            }
-            
-            // Store in localStorage
-            localStorage.setItem('meteo-iframe', code);
-            
-            // Extract and store metadata
-            const metadata = extractMetadata(code);
-            localStorage.setItem('meteo-metadata', JSON.stringify(metadata));
-            
-            showStatus('✓ Widget saved successfully', 'success');
-            displayIframe(code);
-            displayMetadata(metadata);
-        }
-        
-        // Load iframe from localStorage
-        function loadIframe() {
-            const code = localStorage.getItem('meteo-iframe');
-            const metadata = localStorage.getItem('meteo-metadata');
-            
-            if (code) {
-                document.getElementById('iframe-input').value = code;
-                displayIframe(code);
-            }
-            
-            if (metadata) {
-                displayMetadata(JSON.parse(metadata));
-            }
-        }
-        
-        // Display iframe in preview
-        function displayIframe(code) {
-            const display = document.getElementById('widget-display');
-            display.innerHTML = code;
-        }
-        
-        // Extract metadata from iframe
-        function extractMetadata(iframeCode) {
-            const metadata = {};
-            
-            // Extract src
-            const srcMatch = iframeCode.match(/src\s*=\s*["']([^"']+)["']/i);
-            if (srcMatch) {
-                metadata.src = srcMatch[1];
-                // Extract domain from src
-                const urlMatch = srcMatch[1].match(/https?:\/\/([^\/]+)/);
-                if (urlMatch) {
-                    metadata.domain = urlMatch[1];
-                }
-            }
-            
-            // Extract width
-            const widthMatch = iframeCode.match(/width\s*=\s*["']?(\d+)["']?/i);
-            if (widthMatch) {
-                metadata.width = widthMatch[1];
-            }
-            
-            // Extract height
-            const heightMatch = iframeCode.match(/height\s*=\s*["']?(\d+)["']?/i);
-            if (heightMatch) {
-                metadata.height = heightMatch[1];
-            }
-            
-            // Extract title/name from src if available
-            const titleMatch = iframeCode.match(/[?&]city=([^&\s]+)/i);
-            if (titleMatch) {
-                metadata.city = decodeURIComponent(titleMatch[1]);
-            }
-            
-            // Extract class
-            const classMatch = iframeCode.match(/class\s*=\s*["']([^"']+)["']/i);
-            if (classMatch) {
-                metadata.class = classMatch[1];
-            }
-            
-            // Extract id
-            const idMatch = iframeCode.match(/id\s*=\s*["']([^"']+)["']/i);
-            if (idMatch) {
-                metadata.id = idMatch[1];
-            }
-            
-            // Capture timestamp
-            metadata.savedAt = new Date().toLocaleString();
-            
-            return metadata;
-        }
-        
-        // Display extracted metadata
-        function displayMetadata(metadata) {
-            if (!metadata || Object.keys(metadata).length === 0) {
-                document.getElementById('metadata').style.display = 'none';
-                return;
-            }
-            
-            const metadataSection = document.getElementById('metadata');
-            const contentDiv = document.getElementById('metadata-content');
-            
-            let html = '';
-            
-            if (metadata.domain) {
-                html += `<div><strong>Domain:</strong> ${escapeHtml(metadata.domain)}</div>`;
-            }
-            if (metadata.src) {
-                html += `<div><strong>Source:</strong> <code style="background: #fff; padding: 2px 4px; border-radius: 2px; font-size: 11px;">${escapeHtml(metadata.src.substring(0, 60))}${metadata.src.length > 60 ? '...' : ''}</code></div>`;
-            }
-            if (metadata.city) {
-                html += `<div><strong>City:</strong> ${escapeHtml(metadata.city)}</div>`;
-            }
-            if (metadata.width || metadata.height) {
-                html += `<div><strong>Dimensions:</strong> ${metadata.width || 'auto'} × ${metadata.height || 'auto'}</div>`;
-            }
-            if (metadata.class) {
-                html += `<div><strong>Class:</strong> ${escapeHtml(metadata.class)}</div>`;
-            }
-            if (metadata.id) {
-                html += `<div><strong>ID:</strong> ${escapeHtml(metadata.id)}</div>`;
-            }
-            if (metadata.savedAt) {
-                html += `<div><strong>Saved:</strong> ${escapeHtml(metadata.savedAt)}</div>`;
-            }
-            
-            contentDiv.innerHTML = html;
-            metadataSection.style.display = 'block';
-        }
-        
-        // Clear iframe
-        function clearIframe() {
-            if (confirm('Clear the stored widget?')) {
-                localStorage.removeItem('meteo-iframe');
-                localStorage.removeItem('meteo-metadata');
-                document.getElementById('iframe-input').value = '';
-                document.getElementById('widget-display').innerHTML = 'No widget loaded yet. Paste the iframe code above.';
-                document.getElementById('metadata').style.display = 'none';
-                showStatus('Widget cleared', 'success');
-            }
-        }
-        
-        // Show status message
-        function showStatus(message, type) {
-            const status = document.getElementById('status');
-            status.textContent = message;
-            status.className = `status ${type}`;
-            
-            // Auto-hide after 3 seconds
-            if (type === 'success') {
-                setTimeout(() => {
-                    status.className = 'status';
-                }, 3000);
-            }
-        }
-        
-        // Escape HTML to prevent injection
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+        // Placeholder for future functionality
     </script>
 </body>
 </html>

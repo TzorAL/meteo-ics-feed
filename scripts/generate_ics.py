@@ -213,11 +213,13 @@ def generate_ics(config: Dict[str, Any], forecast: Dict[str, Any]) -> str:
         if config["event_time"].strip():
             # Timed event
             try:
+                from datetime import time
                 time_parts = config["event_time"].split(":")
                 hour = int(time_parts[0])
                 minute = int(time_parts[1]) if len(time_parts) > 1 else 0
                 
-                start_dt = datetime.combine(date_obj, type('', (), {'hour': hour, 'minute': minute, 'second': 0})())
+                event_time = time(hour=hour, minute=minute)
+                start_dt = datetime.combine(date_obj, event_time)
                 end_dt = start_dt + timedelta(minutes=15)
                 
                 ics_lines.append(f"DTSTART;TZID={config['timezone']}:{start_dt.strftime('%Y%m%dT%H%M%S')}")
