@@ -13,7 +13,7 @@ DTSTART;VALUE=DATE:20260118
 DTEND;VALUE=DATE:20260119
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 4.2°C – 7.4°C\\nPrecipitation Probability: 0%\
- \nWind: 18.3km/h\\n\nVisit the weather widget: https://USERNAME.github.io/
+ \nWind: 18.3km/h\\n\nVisit the weather widget: https://tzoral.github.io/
  REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -25,7 +25,7 @@ DTSTART;VALUE=DATE:20260119
 DTEND;VALUE=DATE:20260120
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 3.6°C – 7.3°C\\nPrecipitation Probability: 3%\
- \nWind: 22.7km/h\\n\nVisit the weather widget: https://USERNAME.github.io/
+ \nWind: 22.7km/h\\n\nVisit the weather widget: https://tzoral.github.io/
  REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -38,7 +38,7 @@ DTEND;VALUE=DATE:20260121
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 5.1°C – 8.7°C\\nPrecipitation Probability: 68%
  \\nPrecipitation: 3.1mm\\nWind: 18.7km/h\\n\nVisit the weather widget: htt
- ps://USERNAME.github.io/REPO/
+ ps://tzoral.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -50,7 +50,7 @@ DTEND;VALUE=DATE:20260122
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 7.3°C – 12.8°C\\nPrecipitation Probability: 95
  %\\nPrecipitation: 83.9mm\\nWind: 20.6km/h\\n\nVisit the weather widget: h
- ttps://USERNAME.github.io/REPO/
+ ttps://tzoral.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -62,7 +62,7 @@ DTEND;VALUE=DATE:20260123
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 7.8°C – 14.1°C\\nPrecipitation Probability: 45
  %\\nPrecipitation: 3.6mm\\nWind: 6.5km/h\\n\nVisit the weather widget: htt
- ps://USERNAME.github.io/REPO/
+ ps://tzoral.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -74,7 +74,7 @@ DTEND;VALUE=DATE:20260124
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 4.3°C – 15.5°C\\nPrecipitation Probability: 18
  %\\nPrecipitation: 6.9mm\\nWind: 11.5km/h\\n\nVisit the weather widget: ht
- tps://USERNAME.github.io/REPO/
+ tps://tzoral.github.io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -85,7 +85,7 @@ DTSTART;VALUE=DATE:20260124
 DTEND;VALUE=DATE:20260125
 SUMMARY:Today's Weather — Athens
 DESCRIPTION:Temperature: 10.1°C – 16.6°C\\nPrecipitation Probability: 1
- 8%\\nWind: 12.0km/h\\n\nVisit the weather widget: https://USERNAME.github.
+ 8%\\nWind: 12.0km/h\\n\nVisit the weather widget: https://tzoral.github.
  io/REPO/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
