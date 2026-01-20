@@ -1,460 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Calendar Feed - okairos.gr</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            margin: 0 auto;
-            min-height: calc(100vh - 40px);
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .widget-container {
-            padding: 20px;
-        }
-        
-        .info-box {
-            background: #f0f4ff;
-            border: 1px solid #d0d8ff;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .info-box strong {
-            color: #667eea;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
-            font-size: 13px;
-        }
-        
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 12px;
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        button {
-            flex: 1;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-        
-        .btn-save {
-            background: #667eea;
-            color: white;
-        }
-        
-        .btn-save:hover {
-            background: #5568d3;
-        }
-        
-        .btn-clear {
-            background: #f5f5f5;
-            color: #666;
-            border: 1px solid #ddd;
-        }
-        
-        .btn-clear:hover {
-            background: #efefef;
-        }
-        
-        .preview-section {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-        
-        .preview-section h3 {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 12px;
-        }
-        
-        #widget-display {
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            background: #f9f9f9;
-            padding: 10px;
-            text-align: center;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 13px;
-        }
-        
-        #widget-display iframe {
-            width: 100%;
-            border: none;
-            border-radius: 4px;
-        }
-        
-        .metadata {
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 12px;
-            font-size: 12px;
-            line-height: 1.8;
-        }
-        
-        .metadata strong {
-            color: #667eea;
-        }
-        
-        .status {
-            padding: 10px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: none;
-        }
-        
-        .status.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-        
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-        
-        .footer {
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border-top: 1px solid #e0e0e0;
-            font-size: 12px;
-            color: #666;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            margin-top: auto;
-        }
-        
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #333;
-            margin: 20px 0 12px 0;
-            padding-top: 15px;
-            border-top: 2px solid #667eea;
-        }
-        
-        .steps {
-            list-style: none;
-            counter-reset: step;
-        }
-        
-        .steps li {
-            counter-increment: step;
-            margin-bottom: 15px;
-            padding-left: 35px;
-            position: relative;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        .steps li:before {
-            content: counter(step);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #667eea;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        
-        .code-block {
-            background: #f5f5f5;
-            border-left: 3px solid #667eea;
-            padding: 10px 12px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 11px;
-            word-break: break-all;
-            margin: 8px 0;
-            user-select: all;
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .calendar-item {
-            background: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 10px;
-            font-size: 12px;
-        }
-        
-        .calendar-item strong {
-            color: #667eea;
-            display: block;
-            margin-bottom: 4px;
-        }
-        
-        code {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: monospace;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 700px) {
-            .container {
-                border-radius: 0;
-                box-shadow: none;
-            }
-            
-            body {
-                min-height: 100dvh;
-                align-items: flex-start;
-            }
-            
-            .calendar-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Calendar Feed - okairos.gr</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      min-height: calc(100vh - 40px);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 { font-size: 24px; margin-bottom: 8px; }
+    .header p { font-size: 14px; opacity: 0.9; }
+
+    .widget-container { padding: 20px; }
+
+    .info-box {
+      background: #f0f4ff;
+      border: 1px solid #d0d8ff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .info-box strong { color: #667eea; }
+
+    .footer {
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-top: 1px solid #e0e0e0;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      margin: 20px 0 12px 0;
+      padding-top: 15px;
+      border-top: 2px solid #667eea;
+    }
+
+    .steps { list-style: none; counter-reset: step; }
+
+    .steps li {
+      counter-increment: step;
+      margin-bottom: 15px;
+      padding-left: 35px;
+      position: relative;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .steps li:before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #667eea;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .code-block {
+      background: #f5f5f5;
+      border-left: 3px solid #667eea;
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 11px;
+      word-break: break-all;
+      margin: 8px 0;
+      user-select: all;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .calendar-item {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    .calendar-item strong {
+      color: #667eea;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    code {
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    a { color: #667eea; text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) {
+      .container { border-radius: 0; box-shadow: none; }
+      body { min-height: 100dvh; align-items: flex-start; }
+      .calendar-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Weather Calendar Feed</h1>
-            <p>Live weather widget & calendar subscription powered by <a href="https://www.okairos.gr/" target="_blank" style="color: white; font-weight: 500;">okairos.gr</a></p>
-        </div>
-        
-        <div class="widget-container">
-            <!-- Current Weather Widget from okairos.gr -->
-            <h2 class="section-title" style="margin-top: 0; padding-top: 0; border-top: none;">🌤️ Current Weather - Athens</h2>
-            <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-                <div id="c_c5e081a87065ee7e6306a538dddd020b" class="completo"><h2 style="color: #000000; margin: 0 0 3px; padding: 2px; font: bold 13px/1.2 Verdana; text-align: center; width=100%"><a href="https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html" style="color: #000000; text-decoration: none; font: bold 13px/1.2 Verdana;">καιρός Αθήνα</a></h2><div id="w_c5e081a87065ee7e6306a538dddd020b" class="completo" style="height:100%"></div></div><script type="text/javascript" src="https://www.okairos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b"></script>
-            </div>
-            <!-- Subscribe to Calendar Feed -->
-            <h2 class="section-title">📅 Add Weather to Your Calendar</h2>
-            <div class="info-box">
-                Subscribe to get daily weather forecasts for Athens automatically in Google Calendar, Apple Calendar, Outlook, or any calendar app!
-            </div>
-
-            <!-- Athens Calendar Feed -->
-            <h3 style="font-size: 15px; font-weight: 600; margin-top: 15px; margin-bottom: 10px; color: #333;">📍 Athens Calendar Feed:</h3>
-            <div class="calendar-item" style="max-width: 100%;">
-                <strong>🏛️ Athens (Αθήνα)</strong>
-                <div class="code-block" style="margin-top: 5px; font-size: 11px;">https://tzoral.github.io/okairos-ics-feed/feeds/athens.ics</div>
-            </div>
-            
-            <div class="info-box" style="margin-top: 15px; background: #fff3cd; border-color: #ffc107;">
-                <strong>🌍 Want a different city or district?</strong><br>
-                <a href="https://github.com/tzoral/okairos-ics-feed/issues/new" target="_blank" style="color: #667eea;">Open a GitHub issue</a> to request a new location! I'll add it to the feed if it's available on okairos.gr.
-            </div>
-            </div>
-            
-            <h2 class="section-title">🚀 How to Subscribe</h2>
-            
-            <ol class="steps">
-                <li>
-                    <strong>Copy the Athens Calendar Feed URL</strong> from above.
-                </li>
-                <li>
-                    <strong>Open Your Calendar App</strong> and follow the steps for your platform:
-                    <div class="calendar-grid">
-                        <div class="calendar-item">
-                            <strong>🔵 Google Calendar</strong>
-                            Settings → Add other calendars → From URL → Paste
-                        </div>
-                        <div class="calendar-item">
-                            <strong>🍎 Apple Calendar</strong>
-                            File → New Calendar Subscription → Paste URL
-                        </div>
-                        <div class="calendar-item">
-                            <strong>📧 Outlook</strong>
-                            Add calendar → Subscribe from web → Paste URL
-                        </div>
-                        <div class="calendar-item">
-                            <strong>🌐 Other Apps</strong>
-                            Look for "Subscribe" or "Add from URL" option
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <strong>Done!</strong> Daily weather forecasts for Athens will appear automatically. Updates every morning at 06:00 Athens time.
-                </li>
-            </ol>
-            
-            <h2 class="section-title">✨ What You'll Get</h2>
-            <div class="info-box">
-                <strong>Daily Weather Calendar:</strong> Every morning at 06:00 Athens time, your calendar updates with:
-                <ul style="margin-top: 8px; margin-left: 16px; font-size: 13px;">
-                    <li>🌡️ Minimum & Maximum Temperature</li>
-                    <li>💧 Precipitation Probability & Amount</li>
-                    <li>💨 Wind Speed</li>
-                    <li>📅 7-day forecast automatically</li>
-                </ul>
-            </div>
-
-            <h2 class="section-title">🖼️ Calendar Event Preview</h2>
-            <div class="info-box" style="font-family: monospace; white-space: pre; overflow-x: auto; font-size: 12px;">
-                <div id="event-preview-title">Event title: (loading…)</div>
-                <div id="event-preview-body" style="margin-top: 6px;">Fetching live preview from feeds/athens.ics…</div>
-            </div>
-        </div>
-        
+  <div class="container">
+    <div class="header">
+      <h1>Weather Calendar Feed</h1>
+      <p>
+        Live weather widget & calendar subscription powered by
+        <a href="https://www.okairos.gr/" target="_blank" rel="noopener" style="color: white; font-weight: 500;">okairos.gr</a>
+      </p>
     </div>
-</body>
-<script>
-// Fetch the latest Athens ICS and render first event (summary + panel) as preview
-(async function renderIcsPreview() {
+
+    <div class="widget-container">
+      <!-- Current Weather Widget from okairos.gr -->
+      <h2 class="section-title" style="margin-top: 0; padding-top: 0; border-top: none;">🌤️ Current Weather - Athens</h2>
+      <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <div id="c_c5e081a87065ee7e6306a538dddd020b" class="completo">
+          <h2 style="color: #000000; margin: 0 0 3px; padding: 2px; font: bold 13px/1.2 Verdana; text-align: center; width=100%">
+            <a href="https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html" style="color: #000000; text-decoration: none; font: bold 13px/1.2 Verdana;">καιρός Αθήνα</a>
+          </h2>
+          <div id="w_c5e081a87065ee7e6306a538dddd020b" class="completo" style="height:100%"></div>
+        </div>
+        <script type="text/javascript" src="https://www.okairos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b"></script>
+      </div>
+
+      <!-- Subscribe to Calendar Feed -->
+      <h2 class="section-title">📅 Add Weather to Your Calendar</h2>
+      <div class="info-box">
+        Subscribe to get daily weather forecasts for Athens automatically in Google Calendar, Apple Calendar, Outlook, or any calendar app!
+      </div>
+
+      <!-- Athens Calendar Feed -->
+      <h3 style="font-size: 15px; font-weight: 600; margin-top: 15px; margin-bottom: 10px; color: #333;">📍 Athens Calendar Feed:</h3>
+      <div class="calendar-item" style="max-width: 100%;">
+        <strong>🏛️ Athens (Αθήνα)</strong>
+        <div class="code-block" style="margin-top: 5px; font-size: 11px;">
+          https://tzoral.github.io/okairos-ics-feed/feeds/athens.ics
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 15px; background: #fff3cd; border-color: #ffc107;">
+        <strong>🌍 Want a different city or district?</strong><br />
+        <a href="https://github.com/tzoral/okairos-ics-feed/issues/new" target="_blank" rel="noopener" style="color: #667eea;">Open a GitHub issue</a>
+        to request a new location! I'll add it to the feed if it's available on okairos.gr.
+      </div>
+
+      <h2 class="section-title">🚀 How to Subscribe</h2>
+      <ol class="steps">
+        <li>
+          <strong>Copy the Athens Calendar Feed URL</strong> from above.
+        </li>
+        <li>
+          <strong>Open Your Calendar App</strong> and follow the steps for your platform:
+          <div class="calendar-grid">
+            <div class="calendar-item">
+              <strong>🔵 Google Calendar</strong>
+              Settings → Add other calendars → From URL → Paste
+            </div>
+            <div class="calendar-item">
+              <strong>🍎 Apple Calendar</strong>
+              File → New Calendar Subscription → Paste URL
+            </div>
+            <div class="calendar-item">
+              <strong>📧 Outlook</strong>
+              Add calendar → Subscribe from web → Paste URL
+            </div>
+            <div class="calendar-item">
+              <strong>🌐 Other Apps</strong>
+              Look for "Subscribe" or "Add from URL" option
+            </div>
+          </div>
+        </li>
+        <li>
+          <strong>Done!</strong> Daily weather forecasts for Athens will appear automatically. Updates every morning at 06:00 Athens time.
+        </li>
+      </ol>
+
+      <h2 class="section-title">✨ What You'll Get</h2>
+      <div class="info-box">
+        <strong>Daily Weather Calendar:</strong> Every morning at 06:00 Athens time, your calendar updates with:
+        <ul style="margin-top: 8px; margin-left: 16px; font-size: 13px;">
+          <li>🌡️ Minimum & Maximum Temperature</li>
+          <li>💧 Precipitation Probability & Amount</li>
+          <li>💨 Wind Speed</li>
+          <li>📅 7-day forecast automatically</li>
+        </ul>
+      </div>
+
+      <!-- UPDATED PREVIEW: compact per-day description (matches new ICS output) -->
+      <h2 class="section-title">🖼️ Calendar Event Preview</h2>
+      <div class="info-box" style="font-family: monospace; white-space: pre; overflow-x: auto; font-size: 12px;">
+        <div id="event-preview-title">Event title: (loading…)</div>
+        <div id="event-preview-body" style="margin-top: 6px;">Fetching live preview from feeds/athens.ics…</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Built for calendar subscriptions • Powered by okairos.gr
+    </div>
+  </div>
+
+  <script>
+  // Fetch the latest Athens ICS and render first event (Google Calendar friendly: compact per-day description)
+  (async function renderIcsPreview() {
     const titleEl = document.getElementById('event-preview-title');
-    const bodyEl = document.getElementById('event-preview-body');
+    const bodyEl  = document.getElementById('event-preview-body');
     if (!titleEl || !bodyEl) return;
 
+    const fallbackSummary = '🌤️ 13°C Partly Cloudy';
+    const fallbackDescription =
+`🌤️ Athens — Σήμερα • Τώρα 13°C
+Min/Max: 9°C / 14°C
+Συνθήκες: Partly Cloudy
+Ανατολή/Δύση: 07:36 / 17:37
+Widget: https://tzoral.github.io/okairos-ics-feed/
+Σελίδα: https://www.okairos.gr/αθήνα.html`;
+
     const fallback = () => {
-        titleEl.textContent = 'Event title: ☁️ 10°C Partly Cloudy';
-        bodyEl.textContent = `┌─────────────────────────────────────────────────────────────────┐\n│                          καιρός Athens                          │\n├─────────────────────────────────────────────────────────────────┤\n│    Σήμερα           Αύριο            Πέμπτη         Παρασκευή   │\n│      ☁️               ☁️               ☁️               ☁️      │\n│     10°              12°              14°              14°      │\n│   Max/Min          Max/Min          Max/Min          Max/Min    │\n│    10° 7°           12° 8°           14° 9°           14° 8°    │\n│    -- bf            -- bf            -- bf            -- bf     │\n│      —                —                —                —       │\n│    07:37            07:36            07:36            07:35     │\n│    17:35            17:36            17:37            17:38     │\n└─────────────────────────────────────────────────────────────────┘\n\nDetails:\n - Temperature Range: 7°C – 10°C\n - Sunrise/Sunset: 07:37 / 17:35\n - Live widget + okairos.gr links in the event description`; 
+      titleEl.textContent = `Event title: ${fallbackSummary}`;
+      bodyEl.textContent = fallbackDescription;
     };
 
+    // ICS helper: unfold folded lines (RFC 5545: lines starting with space/tab are continuations)
+    const unfoldIcs = (txt) => txt.replace(/\r?\n[ \t]/g, '');
+
+    // Extract full field value (handles folded lines + stops at next property)
+    const getField = (eventBlock, fieldName) => {
+      const re = new RegExp(
+        `(?:^|\\n)${fieldName}(?:;[^:\\n]*)?:(.*?)(?=\\n[A-Z][A-Z0-9-]*?(?:;[^:\\n]*)?:|$)`,
+        's'
+      );
+      const m = eventBlock.match(re);
+      return m ? m[1].trim() : '';
+    };
+
+    // Unescape ICS text values
+    const unescapeIcsText = (s) => s
+      .replace(/\\n/g, '\n')
+      .replace(/\\,/g, ',')
+      .replace(/\\;/g, ';')
+      .replace(/\\\\/g, '\\');
+
     try {
-        const res = await fetch('feeds/athens.ics', { cache: 'no-cache' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        let txt = await res.text();
+      const res = await fetch('feeds/athens.ics', { cache: 'no-cache' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
 
-        // Unfold lines (ICS folding: lines starting with space are continuations)
-        txt = txt.replace(/\r?\n /g, '');
+      let txt = await res.text();
+      txt = unfoldIcs(txt);
 
-        // Take first VEVENT
-        const evMatch = txt.match(/BEGIN:VEVENT([\s\S]*?)END:VEVENT/);
-        if (!evMatch) return fallback();
-        const ev = evMatch[1];
+      // First VEVENT
+      const evMatch = txt.match(/BEGIN:VEVENT([\s\S]*?)END:VEVENT/);
+      if (!evMatch) return fallback();
 
-        // Extract SUMMARY and DESCRIPTION
-        const summaryMatch = ev.match(/SUMMARY:(.*)/);
-        const descriptionMatch = ev.match(/DESCRIPTION:(.*)/);
-        const summary = summaryMatch ? summaryMatch[1].trim() : '(no title)';
-        let description = descriptionMatch ? descriptionMatch[1] : '';
+      const ev = evMatch[1];
 
-        // Unescape ICS text
-        description = description
-            .replace(/\\n/g, '\n')
-            .replace(/\\,/g, ',')
-            .replace(/\\;/g, ';')
-            .replace(/\\\\/g, '\\');
+      const summaryRaw = getField(ev, 'SUMMARY');
+      const descRaw    = getField(ev, 'DESCRIPTION');
 
-        titleEl.textContent = `Event title: ${summary}`;
-        bodyEl.textContent = description;
+      const summary = summaryRaw ? unescapeIcsText(summaryRaw) : '(no title)';
+      const desc    = descRaw ? unescapeIcsText(descRaw) : '(no description)';
+
+      titleEl.textContent = `Event title: ${summary}`;
+      bodyEl.textContent  = desc;
+
     } catch (e) {
-        console.warn('Preview fallback, could not fetch ICS:', e);
-        fallback();
+      console.warn('Preview fallback, could not fetch ICS:', e);
+      fallback();
     }
-})();
-</script>
+  })();
+  </script>
+</body>
 </html>
-
