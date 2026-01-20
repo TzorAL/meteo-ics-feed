@@ -7,85 +7,85 @@ X-WR-CALNAME:Daily Weather Forecast - Athens
 X-WR-TIMEZONE:Europe/Athens
 X-WR-CALDESC:Daily weather forecast
 BEGIN:VEVENT
-UID:weather-20260119@github-pages
-DTSTAMP:20260119T045226Z
-DTSTART;VALUE=DATE:20260119
-DTEND;VALUE=DATE:20260120
+UID:weather-20260120@github-pages
+DTSTAMP:20260120T044515Z
+DTSTART;VALUE=DATE:20260120
+DTEND;VALUE=DATE:20260121
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 3.8°C – 6.6°C\\nPrecipitation Probability: 0%\
- \nWind: 20.2km/h\\n\nVisit the weather widget: https://tzoral.github.io/me
+DESCRIPTION:Temperature: 4.6°C – 9.1°C\\nPrecipitation Probability: 5%\
+ \nWind: 20.6km/h\\n\nVisit the weather widget: https://tzoral.github.io/me
  teo-ics-feed/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:weather-20260120@github-pages
-DTSTAMP:20260119T045226Z
-DTSTART;VALUE=DATE:20260120
-DTEND;VALUE=DATE:20260121
-SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 3.7°C – 9.0°C\\nPrecipitation Probability: 33%
- \\nWind: 20.1km/h\\n\nVisit the weather widget: https://tzoral.github.io/m
- eteo-ics-feed/
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:weather-20260121@github-pages
-DTSTAMP:20260119T045226Z
+DTSTAMP:20260120T044515Z
 DTSTART;VALUE=DATE:20260121
 DTEND;VALUE=DATE:20260122
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 7.8°C – 10.9°C\\nPrecipitation Probability: 98
- %\\nPrecipitation: 42.5mm\\nWind: 18.5km/h\\n\nVisit the weather widget: h
- ttps://tzoral.github.io/meteo-ics-feed/
+DESCRIPTION:Temperature: 7.9°C – 12.7°C\\nPrecipitation Probability: 10
+ 0%\\nPrecipitation: 101.6mm\\nWind: 15.0km/h\\n\nVisit the weather widget:
+  https://tzoral.github.io/meteo-ics-feed/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260122@github-pages
-DTSTAMP:20260119T045226Z
+DTSTAMP:20260120T044515Z
 DTSTART;VALUE=DATE:20260122
 DTEND;VALUE=DATE:20260123
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 8.8°C – 14.0°C\\nPrecipitation Probability: 66
- %\\nPrecipitation: 0.7mm\\nWind: 5.6km/h\\n\nVisit the weather widget: htt
+DESCRIPTION:Temperature: 8.6°C – 13.9°C\\nPrecipitation Probability: 43
+ %\\nPrecipitation: 0.4mm\\nWind: 6.6km/h\\n\nVisit the weather widget: htt
  ps://tzoral.github.io/meteo-ics-feed/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260123@github-pages
-DTSTAMP:20260119T045226Z
+DTSTAMP:20260120T044515Z
 DTSTART;VALUE=DATE:20260123
 DTEND;VALUE=DATE:20260124
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 6.6°C – 15.1°C\\nPrecipitation Probability: 40
- %\\nPrecipitation: 2.1mm\\nWind: 7.3km/h\\n\nVisit the weather widget: htt
- ps://tzoral.github.io/meteo-ics-feed/
+DESCRIPTION:Temperature: 8.3°C – 15.3°C\\nPrecipitation Probability: 40
+ %\\nWind: 6.7km/h\\n\nVisit the weather widget: https://tzoral.github.io/m
+ eteo-ics-feed/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260124@github-pages
-DTSTAMP:20260119T045226Z
+DTSTAMP:20260120T044515Z
 DTSTART;VALUE=DATE:20260124
 DTEND;VALUE=DATE:20260125
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 7.4°C – 16.5°C\\nPrecipitation Probability: 28
- %\\nWind: 9.7km/h\\n\nVisit the weather widget: https://tzoral.github.io/m
+DESCRIPTION:Temperature: 7.4°C – 15.7°C\\nPrecipitation Probability: 17
+ %\\nWind: 8.4km/h\\n\nVisit the weather widget: https://tzoral.github.io/m
  eteo-ics-feed/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260125@github-pages
-DTSTAMP:20260119T045226Z
+DTSTAMP:20260120T044515Z
 DTSTART;VALUE=DATE:20260125
 DTEND;VALUE=DATE:20260126
 SUMMARY:Today's Weather — Athens
-DESCRIPTION:Temperature: 8.8°C – 15.8°C\\nPrecipitation Probability: 24
- %\\nPrecipitation: 10.8mm\\nWind: 27.4km/h\\n\nVisit the weather widget: h
+DESCRIPTION:Temperature: 12.5°C – 18.0°C\\nPrecipitation Probability: 3
+ 3%\\nPrecipitation: 2.7mm\\nWind: 22.1km/h\\n\nVisit the weather widget: h
+ ttps://tzoral.github.io/meteo-ics-feed/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260126@github-pages
+DTSTAMP:20260120T044515Z
+DTSTART;VALUE=DATE:20260126
+DTEND;VALUE=DATE:20260127
+SUMMARY:Today's Weather — Athens
+DESCRIPTION:Temperature: 12.7°C – 16.4°C\\nPrecipitation Probability: 3
+ 5%\\nPrecipitation: 9.0mm\\nWind: 22.7km/h\\n\nVisit the weather widget: h
  ttps://tzoral.github.io/meteo-ics-feed/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
