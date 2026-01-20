@@ -1,0 +1,4 @@
+# Optional dependencies for enhanced web scraping
+# The script works with Python stdlib only, but these can improve parsing
+# beautifulsoup4>=4.12.0
+# lxml>=4.9.0

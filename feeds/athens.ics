@@ -1,0 +1,205 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Weather Forecast Calendar//GitHub Pages//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Daily Weather Forecast - Athens
+X-WR-TIMEZONE:Europe/Athens
+X-WR-CALDESC:Daily weather forecast from okairos.gr
+BEGIN:VEVENT
+UID:weather-20260120@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260120
+DTEND;VALUE=DATE:20260121
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Σήμερα
+                         ║\\n║  ─────────────
+ ────────────────  ║\\n║  📋 Clear   
+                    ║\\n║  ──────────────
+ ───────────────  ║\\n║  💨 Wind: Check
+  widget          ║\\n║  ───────────────
+ ──────────────  ║\\n║  🌅 Ανατολή
+ /Δύση: --:-- / --:-- ║\\n╠═════════════
+ ════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260121@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260121
+DTEND;VALUE=DATE:20260122
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Αύριο  
+                        ║\\n║  ─────────────
+ ────────────────  ║\\n║  📋 Clear   
+                    ║\\n║  ──────────────
+ ───────────────  ║\\n║  💨 Wind: Check
+  widget          ║\\n║  ───────────────
+ ──────────────  ║\\n║  🌅 Ανατολή
+ /Δύση: --:-- / --:-- ║\\n╠═════════════
+ ════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260122@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260122
+DTEND;VALUE=DATE:20260123
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Πέμπτη
+                         ║\\n║  ─────────────
+ ────────────────  ║\\n║  📋 Clear   
+                    ║\\n║  ──────────────
+ ───────────────  ║\\n║  💨 Wind: Check
+  widget          ║\\n║  ───────────────
+ ──────────────  ║\\n║  🌅 Ανατολή
+ /Δύση: --:-- / --:-- ║\\n╠═════════════
+ ════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260123@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260123
+DTEND;VALUE=DATE:20260124
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Παρασκ
+ ευή                     ║\\n║  ────────────
+ ─────────────────  ║\\n║  📋 Clear
+                       ║\\n║  ─────────────
+ ────────────────  ║\\n║  💨 Wind: Ch
+ eck widget          ║\\n║  ──────────────
+ ───────────────  ║\\n║  🌅 Ανατο
+ λή/Δύση: --:-- / --:-- ║\\n╠════════════
+ ═════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260124@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260124
+DTEND;VALUE=DATE:20260125
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Σάββατ
+ ο                       ║\\n║  ────────────
+ ─────────────────  ║\\n║  📋 Clear
+                       ║\\n║  ─────────────
+ ────────────────  ║\\n║  💨 Wind: Ch
+ eck widget          ║\\n║  ──────────────
+ ───────────────  ║\\n║  🌅 Ανατο
+ λή/Δύση: --:-- / --:-- ║\\n╠════════════
+ ═════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260125@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260125
+DTEND;VALUE=DATE:20260126
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Κυριακ
+ ή                       ║\\n║  ────────────
+ ─────────────────  ║\\n║  📋 Clear
+                       ║\\n║  ─────────────
+ ────────────────  ║\\n║  💨 Wind: Ch
+ eck widget          ║\\n║  ──────────────
+ ───────────────  ║\\n║  🌅 Ανατο
+ λή/Δύση: --:-- / --:-- ║\\n╠════════════
+ ═════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260126@github-pages
+DTSTAMP:20260120T133103Z
+DTSTART;VALUE=DATE:20260126
+DTEND;VALUE=DATE:20260127
+SUMMARY:☀️ Clear
+DESCRIPTION:╔════════════════════
+ ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ THENS           ║\\n╠════════════════
+ ═════════════════╣\\n║  Δευτέρ
+ α                       ║\\n║  ────────────
+ ─────────────────  ║\\n║  📋 Clear
+                       ║\\n║  ─────────────
+ ────────────────  ║\\n║  💨 Wind: Ch
+ eck widget          ║\\n║  ──────────────
+ ───────────────  ║\\n║  🌅 Ανατο
+ λή/Δύση: --:-- / --:-- ║\\n╠════════════
+ ═════════════════════╣\\n║  
+ 🔗 okairos.gr                  ║\\n╚══════════
+ ═══════════════════════╝\\
+ n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
+ tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
+ airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
+ st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

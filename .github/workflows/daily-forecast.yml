@@ -28,7 +28,8 @@ jobs:
       - name: Check if forecast.ics changed
         id: check_changes
         run: |
-          if git diff --quiet forecast.ics; then
+          git add -N feeds/*.ics
+          if git diff --quiet feeds/*.ics; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -39,6 +40,6 @@ jobs:
         run: |
           git config user.name "Weather Bot"
           git config user.email "noreply@github.com"
-          git add forecast.ics
-          git commit -m "chore: update forecast.ics"
+          git add feeds/*.ics
+          git commit -m "chore: update weather forecasts"
           git push

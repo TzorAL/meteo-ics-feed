@@ -1,0 +1,242 @@
+{
+  "locations": [
+    {
+      "name": "Athens",
+      "name_greek": "Αθήνα",
+      "widget_id": "c5e081a87065ee7e6306a538dddd020b",
+      "url": "https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html",
+      "filename": "feeds/athens.ics"
+    },
+    {
+      "name": "Thessaloniki",
+      "name_greek": "Θεσσαλονίκη",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%B8%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7.html",
+      "filename": "feeds/thessaloniki.ics"
+    },
+    {
+      "name": "Patras",
+      "name_greek": "Πάτρα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%80%CE%AC%CF%84%CF%81%CE%B1.html",
+      "filename": "feeds/patras.ics"
+    },
+    {
+      "name": "Heraklion",
+      "name_greek": "Ηράκλειο",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%B7%CF%81%CE%AC%CE%BA%CE%BB%CE%B5%CE%B9%CE%BF.html",
+      "filename": "feeds/heraklion.ics"
+    },
+    {
+      "name": "Larissa",
+      "name_greek": "Λάρισα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BB%CE%AC%CF%81%CE%B9%CF%83%CE%B1.html",
+      "filename": "feeds/larissa.ics"
+    },
+    {
+      "name": "Ioannina",
+      "name_greek": "Ιωάννινα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%B9%CF%89%CE%AC%CE%BD%CE%BD%CE%B9%CE%BD%CE%B1.html",
+      "filename": "feeds/ioannina.ics"
+    },
+    {
+      "name": "Kavala",
+      "name_greek": "Καβάλα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CE%B1%CE%B2%CE%AC%CE%BB%CE%B1.html",
+      "filename": "feeds/kavala.ics"
+    },
+    {
+      "name": "Alexandroupoli",
+      "name_greek": "Αλεξανδρούπολη",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%B1%CE%BB%CE%B5%CE%BE%CE%B1%CE%BD%CE%B4%CF%81%CE%BF%CF%8D%CF%80%CE%BF%CE%BB%CE%B7.html",
+      "filename": "feeds/alexandroupoli.ics"
+    },
+    {
+      "name": "Rhodes",
+      "name_greek": "Ρόδος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%81%CF%8C%CE%B4%CE%BF%CF%82.html",
+      "filename": "feeds/rhodes.ics"
+    },
+    {
+      "name": "Chania",
+      "name_greek": "Χανιά",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%87%CE%B1%CE%BD%CE%B9%CE%AC.html",
+      "filename": "feeds/chania.ics"
+    },
+    {
+      "name": "Serres",
+      "name_greek": "Σέρρες",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%83%CE%AD%CF%81%CF%81%CE%B5%CF%82.html",
+      "filename": "feeds/serres.ics"
+    },
+    {
+      "name": "Pyrgos",
+      "name_greek": "Πύργος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%80%CF%8D%CF%81%CE%B3%CE%BF%CF%82.html",
+      "filename": "feeds/pyrgos.ics"
+    },
+    {
+      "name": "Kythira",
+      "name_greek": "Κύθηρα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CF%8D%CE%B8%CE%B7%CF%81%CE%B1.html",
+      "filename": "feeds/kythira.ics"
+    },
+    {
+      "name": "Skopelos",
+      "name_greek": "Σκόπελος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%83%CE%BA%CF%8C%CF%80%CE%B5%CE%BB%CE%BF%CF%82.html",
+      "filename": "feeds/skopelos.ics"
+    },
+    {
+      "name": "Arta",
+      "name_greek": "Άρτα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%AC%CF%81%CF%84%CE%B1.html",
+      "filename": "feeds/arta.ics"
+    },
+    {
+      "name": "Orestiada",
+      "name_greek": "Ορεστιάδα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BF%CF%81%CE%B5%CF%83%CF%84%CE%B9%CE%AC%CE%B4%CE%B1.html",
+      "filename": "feeds/orestiada.ics"
+    },
+    {
+      "name": "Syros",
+      "name_greek": "Σύρος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%83%CF%8D%CF%81%CE%BF%CF%82.html",
+      "filename": "feeds/syros.ics"
+    },
+    {
+      "name": "Kos",
+      "name_greek": "Κως",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CF%89%CF%82.html",
+      "filename": "feeds/kos.ics"
+    },
+    {
+      "name": "Naxos",
+      "name_greek": "Νάξος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BD%CE%AC%CE%BE%CE%BF%CF%82.html",
+      "filename": "feeds/naxos.ics"
+    },
+    {
+      "name": "Santorini",
+      "name_greek": "Σαντορίνη",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%83%CE%B1%CE%BD%CF%84%CE%BF%CF%81%CE%AF%CE%BD%CE%B7.html",
+      "filename": "feeds/santorini.ics"
+    },
+    {
+      "name": "Karpathos",
+      "name_greek": "Κάρπαθος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CE%AC%CF%81%CF%80%CE%B1%CE%B8%CE%BF%CF%82.html",
+      "filename": "feeds/karpathos.ics"
+    },
+    {
+      "name": "Milos",
+      "name_greek": "Μήλος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BC%CE%AE%CE%BB%CE%BF%CF%82.html",
+      "filename": "feeds/milos.ics"
+    },
+    {
+      "name": "Chalkida",
+      "name_greek": "Χαλκίδα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%87%CE%B1%CE%BB%CE%BA%CE%AF%CE%B4%CE%B1.html",
+      "filename": "feeds/chalkida.ics"
+    },
+    {
+      "name": "Lamia",
+      "name_greek": "Λαμία",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BB%CE%B1%CE%BC%CE%AF%CE%B1.html",
+      "filename": "feeds/lamia.ics"
+    },
+    {
+      "name": "Kalamata",
+      "name_greek": "Καλαμάτα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CE%B1%CE%BB%CE%B1%CE%BC%CE%AC%CF%84%CE%B1.html",
+      "filename": "feeds/kalamata.ics"
+    },
+    {
+      "name": "Corinth",
+      "name_greek": "Κόρινθος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CF%8C%CF%81%CE%B9%CE%BD%CE%B8%CE%BF%CF%82.html",
+      "filename": "feeds/corinth.ics"
+    },
+    {
+      "name": "Tripoli",
+      "name_greek": "Τρίπολη",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%84%CF%81%CE%AF%CF%80%CE%BF%CE%BB%CE%B7.html",
+      "filename": "feeds/tripoli.ics"
+    },
+    {
+      "name": "Kozani",
+      "name_greek": "Κοζάνη",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CE%BF%CE%B6%CE%AC%CE%BD%CE%B7.html",
+      "filename": "feeds/kozani.ics"
+    },
+    {
+      "name": "Mytilene",
+      "name_greek": "Μυτιλήνη",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BC%CF%85%CF%84%CE%B9%CE%BB%CE%AE%CE%BD%CE%B7.html",
+      "filename": "feeds/mytilene.ics"
+    },
+    {
+      "name": "Limnos",
+      "name_greek": "Λήμνος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BB%CE%AE%CE%BC%CE%BD%CE%BF%CF%82.html",
+      "filename": "feeds/limnos.ics"
+    },
+    {
+      "name": "Samos",
+      "name_greek": "Σάμος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%83%CE%AC%CE%BC%CE%BF%CF%82.html",
+      "filename": "feeds/samos.ics"
+    },
+    {
+      "name": "Chios",
+      "name_greek": "Χίος",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CF%87%CE%AF%CE%BF%CF%82.html",
+      "filename": "feeds/chios.ics"
+    },
+    {
+      "name": "Corfu",
+      "name_greek": "Κέρκυρα",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CE%AD%CF%81%CE%BA%CF%85%CF%81%CE%B1.html",
+      "filename": "feeds/corfu.ics"
+    },
+    {
+      "name": "Kefalonia",
+      "name_greek": "Κεφαλλονιά",
+      "widget_id": "get_from_okairos_widget_generator",
+      "url": "https://www.okairos.gr/%CE%BA%CE%B5%CF%86%CE%B1%CE%BB%CE%BB%CE%BF%CE%BD%CE%B9%CE%AC.html",
+      "filename": "feeds/kefalonia.ics"
+    }
+  ]
+}
