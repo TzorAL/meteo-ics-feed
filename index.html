@@ -400,9 +400,61 @@
                     <li>📅 7-day forecast automatically</li>
                 </ul>
             </div>
+
+            <h2 class="section-title">🖼️ Calendar Event Preview</h2>
+            <div class="info-box" style="font-family: monospace; white-space: pre; overflow-x: auto; font-size: 12px;">
+                <div id="event-preview-title">Event title: (loading…)</div>
+                <div id="event-preview-body" style="margin-top: 6px;">Fetching live preview from feeds/athens.ics…</div>
+            </div>
         </div>
         
     </div>
 </body>
+<script>
+// Fetch the latest Athens ICS and render first event (summary + panel) as preview
+(async function renderIcsPreview() {
+    const titleEl = document.getElementById('event-preview-title');
+    const bodyEl = document.getElementById('event-preview-body');
+    if (!titleEl || !bodyEl) return;
+
+    const fallback = () => {
+        titleEl.textContent = 'Event title: ☁️ 10°C Partly Cloudy';
+        bodyEl.textContent = `┌─────────────────────────────────────────────────────────────────┐\n│                          καιρός Athens                          │\n├─────────────────────────────────────────────────────────────────┤\n│    Σήμερα           Αύριο            Πέμπτη         Παρασκευή   │\n│      ☁️               ☁️               ☁️               ☁️      │\n│     10°              12°              14°              14°      │\n│   Max/Min          Max/Min          Max/Min          Max/Min    │\n│    10° 7°           12° 8°           14° 9°           14° 8°    │\n│    -- bf            -- bf            -- bf            -- bf     │\n│      —                —                —                —       │\n│    07:37            07:36            07:36            07:35     │\n│    17:35            17:36            17:37            17:38     │\n└─────────────────────────────────────────────────────────────────┘\n\nDetails:\n - Temperature Range: 7°C – 10°C\n - Sunrise/Sunset: 07:37 / 17:35\n - Live widget + okairos.gr links in the event description`; 
+    };
+
+    try {
+        const res = await fetch('feeds/athens.ics', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        let txt = await res.text();
+
+        // Unfold lines (ICS folding: lines starting with space are continuations)
+        txt = txt.replace(/\r?\n /g, '');
+
+        // Take first VEVENT
+        const evMatch = txt.match(/BEGIN:VEVENT([\s\S]*?)END:VEVENT/);
+        if (!evMatch) return fallback();
+        const ev = evMatch[1];
+
+        // Extract SUMMARY and DESCRIPTION
+        const summaryMatch = ev.match(/SUMMARY:(.*)/);
+        const descriptionMatch = ev.match(/DESCRIPTION:(.*)/);
+        const summary = summaryMatch ? summaryMatch[1].trim() : '(no title)';
+        let description = descriptionMatch ? descriptionMatch[1] : '';
+
+        // Unescape ICS text
+        description = description
+            .replace(/\\n/g, '\n')
+            .replace(/\\,/g, ',')
+            .replace(/\\;/g, ';')
+            .replace(/\\\\/g, '\\');
+
+        titleEl.textContent = `Event title: ${summary}`;
+        bodyEl.textContent = description;
+    } catch (e) {
+        console.warn('Preview fallback, could not fetch ICS:', e);
+        fallback();
+    }
+})();
+</script>
 </html>
 
