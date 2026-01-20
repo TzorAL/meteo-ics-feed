@@ -39,6 +39,9 @@ def generate_ics(config: Dict[str, Any], forecasts: List[Dict[str, Any]]) -> str
         # DTSTAMP in UTC (current time)
         dtstamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         ics_lines.append(f"DTSTAMP:{dtstamp}")
+        
+        # SEQUENCE to force calendar clients to update (increment on each generation)
+        ics_lines.append("SEQUENCE:1")
 
         # DTSTART / DTEND
         if config["event_time"].strip():
