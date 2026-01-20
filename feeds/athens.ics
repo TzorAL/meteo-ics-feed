@@ -8,35 +8,92 @@ X-WR-TIMEZONE:Europe/Athens
 X-WR-CALDESC:Daily weather forecast from okairos.gr
 BEGIN:VEVENT
 UID:weather-20260120@github-pages
-DTSTAMP:20260120T162721Z
+DTSTAMP:20260120T201745Z
 DTSTART;VALUE=DATE:20260120
 DTEND;VALUE=DATE:20260121
-SUMMARY:☁️ 10°C Partly Cloudy
-DESCRIPTION:┌────────────────────
- ────────────────────────
- ─────────────────────┐\n│   
-                        καιρός Athens                          │\n
- ├───────────────────────
- ────────────────────────
- ──────────────────┤\n│    Σήμε
- ρα           Αύριο            Πέμπτη         Παρασκευ
- ή   │\n│      ☁️               ☁️               ☁️       
-         ☁️      │\n│     10°              12°              14° 
-              14°      │\n│   Max/Min          Max/Min          Max/Mi
- n          Max/Min    │\n│    10° 7°           12° 8°           14
- ° 9°           14° 8°    │\n│    -- bf            -- bf           
-  -- bf            -- bf     │\n│      —                —          
-       —                —       │\n│    07:37            07:36     
-        07:36            07:35     │\n│    17:35            17:36      
-       17:37            17:38     │\n└───────────
- ────────────────────────
- ────────────────────────
- ──────┘\\n\\n🌡️ Temperature Range: 7°C – 10°C\\n
- 📋 Conditions: Partly Cloudy\\n\\n━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━━━\\n📍 Live Widg
- et: https://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://
- www.okairos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full 
- Forecast: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+SUMMARY:☁️ 8°C Cloudy
+DESCRIPTION:☁️ Athens — Σήμερα (20/01/2026) • Τώρα 8°C\n
+ Min/Max: 8°C / 10°C\nΣυνθήκες: Cloudy\nΑνατολή/Δύση: 
+ 07:37 / 17:35\nWidget: https://tzoral.github.io/okairos-ics-feed/\nΣελ
+ ίδα: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260121@github-pages
+DTSTAMP:20260120T201745Z
+DTSTART;VALUE=DATE:20260121
+DTEND;VALUE=DATE:20260122
+SUMMARY:☁️ 11°C Cloudy
+DESCRIPTION:☁️ Athens — Αύριο (21/01/2026) • Τώρα 11°C\nM
+ in/Max: 9°C / 12°C\nΣυνθήκες: Cloudy\nΑνατολή/Δύση: 0
+ 7:36 / 17:36\nWidget: https://tzoral.github.io/okairos-ics-feed/\nΣελί
+ δα: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260122@github-pages
+DTSTAMP:20260120T201745Z
+DTSTART;VALUE=DATE:20260122
+DTEND;VALUE=DATE:20260123
+SUMMARY:❄️ 13°C Snow
+DESCRIPTION:❄️ Athens — Πέμπτη (22/01/2026) • Τώρα 13°C\
+ nMin/Max: 8°C / 14°C\nΣυνθήκες: Snow\nΑνατολή/Δύση: 0
+ 7:36 / 17:37\nWidget: https://tzoral.github.io/okairos-ics-feed/\nΣελί
+ δα: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260123@github-pages
+DTSTAMP:20260120T201745Z
+DTSTART;VALUE=DATE:20260123
+DTEND;VALUE=DATE:20260124
+SUMMARY:☀️ 14°C Clear
+DESCRIPTION:☀️ Athens — Παρασκευή (23/01/2026) • Τώρα 
+ 14°C\nMin/Max: 8°C / 15°C\nΣυνθήκες: Clear\nΑνατολή/Δύ
+ ση: 07:35 / 17:38\nWidget: https://tzoral.github.io/okairos-ics-feed/\n
+ Σελίδα: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260124@github-pages
+DTSTAMP:20260120T201745Z
+DTSTART;VALUE=DATE:20260124
+DTEND;VALUE=DATE:20260125
+SUMMARY:☀️ 15°C Clear
+DESCRIPTION:☀️ Athens — Σάββατο (24/01/2026)\nMin/Max: 8°C / 
+ 15°C\nΣυνθήκες: Clear\nΑνατολή/Δύση: 07:35 / 17:38\nWi
+ dget: https://tzoral.github.io/okairos-ics-feed/\nΣελίδα: https://ww
+ w.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260125@github-pages
+DTSTAMP:20260120T201745Z
+DTSTART;VALUE=DATE:20260125
+DTEND;VALUE=DATE:20260126
+SUMMARY:☀️ 15°C Clear
+DESCRIPTION:☀️ Athens — Κυριακή (25/01/2026)\nMin/Max: 8°C / 
+ 15°C\nΣυνθήκες: Clear\nΑνατολή/Δύση: 07:35 / 17:38\nWi
+ dget: https://tzoral.github.io/okairos-ics-feed/\nΣελίδα: https://ww
+ w.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:weather-20260126@github-pages
+DTSTAMP:20260120T201745Z
+DTSTART;VALUE=DATE:20260126
+DTEND;VALUE=DATE:20260127
+SUMMARY:☀️ 15°C Clear
+DESCRIPTION:☀️ Athens — Δευτέρα (26/01/2026)\nMin/Max: 8°C / 
+ 15°C\nΣυνθήκες: Clear\nΑνατολή/Δύση: 07:35 / 17:38\nWi
+ dget: https://tzoral.github.io/okairos-ics-feed/\nΣελίδα: https://ww
+ w.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
