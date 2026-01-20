@@ -38,22 +38,101 @@ def fetch_forecast_from_widget(widget_id: str) -> List[Dict[str, Any]]:
         icon_codes = re.findall(r'<div class="icon ([nd]\d+)"></div>', html)
 
         def icon_to_description(code: str) -> str:
+            """Map Foreca icon codes to detailed weather descriptions based on okairos.gr FAQ."""
             if not code:
                 return "Clear"
             try:
-                num = int(code[1:])  # drop leading 'n'/'d'
+                # Code format: [n|d]NNN[s]
+                # n/d = night/day, NNN = number, s = severe
+                num_str = code.lstrip('nd').rstrip('s')
+                num = int(num_str)
             except Exception:
                 return "Clear"
-            # very rough mapping; tweak if you discover real mapping
-            if num >= 500:
-                return "Rain"
-            if num >= 400:
-                return "Cloudy"
-            if num >= 300:
+            
+            # Detailed Foreca icon mapping from okairos.gr FAQ
+            # 100 range: Clear/Almost clear
+            if num == 100:
+                return "Clear"
+            elif num == 110:
+                return "Mostly Clear"
+            
+            # 120-140 range: Few clouds variations
+            elif num == 120:
+                return "Few Clouds"
+            elif num == 121:
+                return "Few Clouds Light Rain"
+            elif num == 122:
+                return "Few Clouds Sleet"
+            elif num == 123:
+                return "Few Clouds Light Snow"
+            elif num == 124:
+                return "Few Clouds Showers"
+            elif num == 125:
+                return "Few Clouds Sleet Showers"
+            elif num == 126:
+                return "Few Clouds Snow Showers"
+            elif num == 127:
+                return "Few Clouds Thunderstorms"
+            
+            # 200 range: Partly cloudy variations
+            elif num == 200:
                 return "Partly Cloudy"
-            if num >= 200:
-                return "Snow"
-            return "Clear"
+            elif num == 210:
+                return "Partly Cloudy Light Rain"
+            elif num == 211:
+                return "Partly Cloudy Sleet"
+            elif num == 212:
+                return "Partly Cloudy Light Snow"
+            elif num == 220:
+                return "Partly Cloudy Showers"
+            elif num == 221:
+                return "Partly Cloudy Sleet Showers"
+            elif num == 222:
+                return "Partly Cloudy Snow Showers"
+            elif num == 230:
+                return "Partly Cloudy Thunderstorms"
+            
+            # 300 range: Overcast/Cloudy variations
+            elif num == 300:
+                return "Cloudy"
+            elif num == 310:
+                return "Cloudy Light Rain"
+            elif num == 311:
+                return "Cloudy Sleet"
+            elif num == 312:
+                return "Cloudy Light Snow"
+            elif num == 320:
+                return "Cloudy Showers"
+            elif num == 321:
+                return "Cloudy Sleet Showers"
+            elif num == 322:
+                return "Cloudy Snow Showers"
+            elif num == 330:
+                return "Cloudy Rain"
+            elif num == 331:
+                return "Cloudy Sleet"
+            elif num == 332:
+                return "Cloudy Snow"
+            elif num == 340:
+                return "Cloudy Thunderstorms"
+            
+            # Generic fallback ranges
+            elif 100 <= num < 120:
+                return "Clear"
+            elif 120 <= num < 200:
+                return "Few Clouds"
+            elif 200 <= num < 300:
+                return "Partly Cloudy"
+            elif 300 <= num < 400:
+                return "Cloudy"
+            elif 400 <= num < 430:
+                return "Light Rain"
+            elif 430 <= num < 470:
+                return "Rain"
+            elif num >= 470:
+                return "Heavy Rain"
+            else:
+                return "Clear"
 
         # Determine how many day-cards are present (often 4)
         num_days = min(

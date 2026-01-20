@@ -5,34 +5,74 @@ from typing import Dict, Any, List
 
 
 def get_weather_emoji(description: str, temp: str = "") -> str:
-    """Return appropriate weather emoji based on description and/or temperature."""
+    """Return appropriate weather emoji based on detailed description and temperature."""
     desc_lower = (description or "").lower()
 
-    # Temperature-based if no specific weather
+    # Temperature-based emoji (only for clear/stable conditions)
     try:
         m = re.search(r"\d+", temp or "")
         temp_val = int(m.group()) if m else 20
-        if temp_val >= 30:
+        if temp_val >= 35:
             return "🔥"
-        elif temp_val <= 5:
+        elif temp_val <= 0:
             return "🥶"
     except Exception:
         pass
 
-    if any(word in desc_lower for word in ["καταιγίδα", "βροχή", "rain", "thunderstorm"]):
+    # Detailed weather condition emojis
+    # Thunderstorms (highest priority)
+    if "thunderstorm" in desc_lower or "καταιγίδα" in desc_lower:
         return "⛈️"
-    if any(word in desc_lower for word in ["βροχ", "νεροπ", "drizzle", "shower"]):
-        return "🌧️"
-    if any(word in desc_lower for word in ["χιόν", "snow"]):
-        return "❄️"
-    if any(word in desc_lower for word in ["ομίχλη", "fog", "mist"]):
+    
+    # Snow conditions
+    if "snow" in desc_lower or "χιόν" in desc_lower:
+        if "shower" in desc_lower or "μπόρες" in desc_lower:
+            return "🌨️"  # Snow cloud
+        elif "light" in desc_lower or "ασθενή" in desc_lower:
+            return "🌨️"  # Light snow
+        else:
+            return "❄️"  # Heavy snow
+    
+    # Sleet (mixed precipitation)
+    if "sleet" in desc_lower or "χιονόνερο" in desc_lower:
+        return "🌨️"
+    
+    # Rain conditions
+    if any(word in desc_lower for word in ["rain", "shower", "βροχ", "μπόρες"]):
+        # Few clouds + rain
+        if "few clouds" in desc_lower or "λίγες νεφώσεις" in desc_lower:
+            return "🌦️"  # Sun behind rain cloud
+        # Light rain
+        elif "light" in desc_lower or "ασθενή" in desc_lower:
+            return "🌦️"  # Light rain
+        # Heavy rain/showers
+        else:
+            return "🌧️"  # Cloud with rain
+    
+    # Fog/Mist
+    if "fog" in desc_lower or "mist" in desc_lower or "ομίχλη" in desc_lower:
         return "🌫️"
-    if any(word in desc_lower for word in ["νεφ", "cloud", "συννεφ"]):
-        return "☁️"
-    if any(word in desc_lower for word in ["αίθρι", "ηλιόλ", "sunny", "clear", "sun"]):
+    
+    # Cloudy conditions (no precipitation)
+    if any(word in desc_lower for word in ["cloud", "νεφ", "συννεφ", "overcast"]):
+        if "few" in desc_lower or "λίγες" in desc_lower:
+            return "🌤️"  # Sun behind small cloud
+        elif "partly" in desc_lower or "μερικώς" in desc_lower:
+            return "⛅"  # Sun behind cloud
+        elif "mostly" in desc_lower or "heavy" in desc_lower:
+            return "☁️"  # Cloud
+        else:
+            return "🌥️"  # Sun behind large cloud
+    
+    # Clear/Sunny
+    if any(word in desc_lower for word in ["clear", "sunny", "αίθρι", "ηλιόλ"]):
         return "☀️"
-    if any(word in desc_lower for word in ["άνεμ", "wind"]):
+    
+    # Wind
+    if "wind" in desc_lower or "άνεμ" in desc_lower:
         return "💨"
+    
+    # Default
     return "🌤️"
 
 
