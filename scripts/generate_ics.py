@@ -258,9 +258,128 @@ def get_weather_emoji(description: str, temp: str = "") -> str:
         return "🌤️"  # Default: partly cloudy
 
 
-def fetch_forecast(location_url: str) -> List[Dict[str, Any]]:
+def fetch_forecast_from_widget(widget_id: str) -> List[Dict[str, Any]]:
     """
-    Fetch weather forecast from okairos.gr by scraping the location page.
+    Fetch weather forecast from okairos.gr widget API.
+    
+    Returns list of forecast data dictionaries with keys:
+    - date: datetime.date object
+    - temp_min: minimum temperature (str)
+    - temp_max: maximum temperature (str)
+    - temp_current: current temperature (str, optional)
+    - description: weather description (str)
+    - precipitation: precipitation info (str, optional)
+    - wind: wind speed (str, optional)
+    - wind_dir: wind direction (str, optional)
+    - sunrise: sunrise time (str, optional)
+    - sunset: sunset time (str, optional)
+    """
+    # The actual widget data is at /widget/get/ not /widget/loader/
+    widget_url = f"https://www.okairos.gr/widget/get/{widget_id}"
+    
+    try:
+        with urlopen(widget_url, timeout=10) as response:
+            html = response.read().decode("utf-8")
+        
+        forecasts = []
+        today = datetime.now().date()
+        
+        # Parse the HTML table structure
+        # Extract all temperature values (main temps shown in day-icon row)
+        main_temps = re.findall(r'<strong>(\d+)&deg;</strong>', html)
+        
+        # Extract max/min temps from the min-max-temp tables
+        max_temps = re.findall(r'<td class="max-temp">(\d+)&deg;</td>', html)
+        min_temps = re.findall(r'<td class="min-temp">(\d+)&deg;</td>', html)
+        
+        # Extract sunrise/sunset times
+        sunrise_times = re.findall(r'<div class="rise">(\d{2}:\d{2})</div>', html)
+        sunset_times = re.findall(r'<div class="set">(\d{2}:\d{2})</div>', html)
+        
+        # Extract weather condition icons (e.g., n300, d430, d300, d400)
+        # n = night, d = day; numbers indicate condition codes
+        icon_codes = re.findall(r'<div class="icon ([nd]\d+)"></div>', html)
+        
+        # Map icon codes to descriptions (simplified mapping)
+        def icon_to_description(code):
+            if not code:
+                return "Clear"
+            num = int(code[1:]) if len(code) > 1 else 0
+            if num >= 500:  # Rain/storms
+                return "Rain"
+            elif num >= 400:  # Cloudy/overcast
+                return "Cloudy"
+            elif num >= 300:  # Partly cloudy
+                return "Partly Cloudy"
+            elif num >= 200:  # Snow
+                return "Snow"
+            else:  # Clear
+                return "Clear"
+        
+        # The widget typically shows 4 days
+        num_days = min(len(main_temps), len(max_temps), len(min_temps))
+        
+        for i in range(num_days):
+            forecast_date = today + timedelta(days=i)
+            forecasts.append({
+                "date": forecast_date,
+                "temp_current": f"{main_temps[i]}°C" if i < len(main_temps) else None,
+                "temp_max": f"{max_temps[i]}°C" if i < len(max_temps) else "N/A",
+                "temp_min": f"{min_temps[i]}°C" if i < len(min_temps) else "N/A",
+                "description": icon_to_description(icon_codes[i]) if i < len(icon_codes) else "Clear",
+                "precipitation": None,  # Not in widget
+                "wind": None,  # Not in this widget format
+                "wind_dir": None,  # Not in this widget format
+                "sunrise": sunrise_times[i] if i < len(sunrise_times) else None,
+                "sunset": sunset_times[i] if i < len(sunset_times) else None,
+            })
+        
+        # If we got less than 7 days, fill in the rest with the last day's data
+        while len(forecasts) < 7:
+            last_forecast = forecasts[-1] if forecasts else None
+            if last_forecast:
+                forecast_date = today + timedelta(days=len(forecasts))
+                forecasts.append({
+                    "date": forecast_date,
+                    "temp_current": None,
+                    "temp_max": last_forecast["temp_max"],
+                    "temp_min": last_forecast["temp_min"],
+                    "description": last_forecast["description"],
+                    "precipitation": None,
+                    "wind": None,
+                    "wind_dir": None,
+                    "sunrise": last_forecast["sunrise"],
+                    "sunset": last_forecast["sunset"],
+                })
+            else:
+                break
+        
+        print(f"  Parsed {num_days} days from widget API", file=sys.stderr)
+        return forecasts
+        
+    except (URLError, OSError) as e:
+        print(f"Error fetching widget data: {e}", file=sys.stderr)
+        # Fall back to minimal data
+        today = datetime.now().date()
+        return [{
+            "date": today + timedelta(days=i),
+            "temp_min": "N/A",
+            "temp_max": "N/A",
+            "description": "Check okairos.gr",
+            "precipitation": None,
+            "wind": None,
+            "wind_dir": None,
+            "sunrise": None,
+            "sunset": None,
+        } for i in range(7)]
+
+
+def fetch_forecast(location_url: str, widget_id: str = None) -> List[Dict[str, Any]]:
+    """
+    Fetch weather forecast from okairos.gr.
+    
+    If widget_id is provided, fetches from widget API (preferred).
+    Otherwise falls back to scraping the location page.
     
     Returns list of forecast data dictionaries with keys:
     - date: datetime.date object
@@ -270,6 +389,11 @@ def fetch_forecast(location_url: str) -> List[Dict[str, Any]]:
     - precipitation: precipitation info (str, optional)
     - wind: wind info (str, optional)
     """
+    # Try widget API first if widget_id is available
+    if widget_id and widget_id != "get_from_okairos_widget_generator":
+        return fetch_forecast_from_widget(widget_id)
+    
+    # Fallback to page scraping
     try:
         with urlopen(location_url, timeout=10) as response:
             html = response.read().decode("utf-8")
@@ -325,7 +449,10 @@ def fetch_forecast(location_url: str) -> List[Dict[str, Any]]:
                 "temp_max": temp_max,
                 "description": description,
                 "precipitation": None,
-                "wind": None
+                "wind": None,
+                "wind_dir": None,
+                "sunrise": None,
+                "sunset": None,
             })
         
         return forecasts
@@ -340,7 +467,10 @@ def fetch_forecast(location_url: str) -> List[Dict[str, Any]]:
             "temp_max": "N/A",
             "description": "Check okairos.gr",
             "precipitation": None,
-            "wind": None
+            "wind": None,
+            "wind_dir": None,
+            "sunrise": None,
+            "sunset": None,
         } for i in range(7)]
 
 
@@ -551,7 +681,7 @@ def main():
             }
             
             try:
-                forecasts = fetch_forecast(config["location_url"])
+                forecasts = fetch_forecast(config["location_url"], config.get("widget_id"))
                 ics_content = generate_ics(config, forecasts)
                 
                 output_path = Path(__file__).parent.parent / location["filename"]
@@ -566,7 +696,7 @@ def main():
         
         print(f"Fetching forecast for {config['location_name']} from okairos.gr...", file=sys.stderr)
         
-        forecasts = fetch_forecast(config["location_url"])
+        forecasts = fetch_forecast(config["location_url"], config.get("widget_id"))
         
         print("Generating ICS...", file=sys.stderr)
         ics_content = generate_ics(config, forecasts)

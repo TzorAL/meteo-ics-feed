@@ -8,10 +8,10 @@ X-WR-TIMEZONE:Europe/Athens
 X-WR-CALDESC:Daily weather forecast from okairos.gr
 BEGIN:VEVENT
 UID:weather-20260120@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260120
 DTEND;VALUE=DATE:20260121
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 10°C Partly Cloudy
 DESCRIPTION:┌────────────────────
  ────────────────────────
  ─────────────────────┐\n│   
@@ -20,190 +20,215 @@ DESCRIPTION:┌────────────────────
  ────────────────────────
  ──────────────────┤\n│    Σήμε
  ρα           Αύριο            Πέμπτη         Παρασκευ
- ή   │\n│      ☀️               ☀️               ☀️       
-         ☀️      │\n│     N/A              N/A              N/A    
-           N/A      │\n│   Max/Min          Max/Min          Max/Min   
-        Max/Min    │\n│   N/A N/A          N/A N/A          N/A N/A    
-       N/A N/A    │\n│    -- bf            -- bf            -- bf      
-       -- bf     │\n│      —                —                —   
-              —       │\n│    --:--            --:--            --:--
-             --:--     │\n│    --:--            --:--            --:-- 
-            --:--     │\n└───────────────
+ ή   │\n│      ☁️               ☁️               ☁️       
+         ☁️      │\n│     10°              12°              14° 
+              14°      │\n│   Max/Min          Max/Min          Max/Mi
+ n          Max/Min    │\n│    10° 7°           12° 8°           14
+ ° 9°           14° 8°    │\n│    -- bf            -- bf           
+  -- bf            -- bf     │\n│      —                —          
+       —                —       │\n│    07:37            07:36     
+        07:36            07:35     │\n│    17:35            17:36      
+       17:37            17:38     │\n└───────────
  ────────────────────────
  ────────────────────────
- ──┘\\n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━━━━━\\n📍 Liv
- e Widget: https://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: ht
- tps://www.okairos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐
-  Full Forecast: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+ ──────┘\\n\\n🌡️ Temperature Range: 7°C – 10°C\\n
+ 📋 Conditions: Partly Cloudy\\n\\n━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━━━━━\\n📍 Live Widg
+ et: https://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://
+ www.okairos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full 
+ Forecast: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260121@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260121
 DTEND;VALUE=DATE:20260122
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 12°C Cloudy
 DESCRIPTION:╔════════════════════
- ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ ═════════════╗\\n║  ☁️  ΚΑΙΡΟΣ - A
  THENS           ║\\n╠════════════════
  ═════════════════╣\\n║  Αύριο  
-                        ║\\n║  ─────────────
- ────────────────  ║\\n║  📋 Clear   
-                    ║\\n║  ──────────────
- ───────────────  ║\\n║  💨 Wind: Check
-  widget          ║\\n║  ───────────────
- ──────────────  ║\\n║  🌅 Ανατολή
- /Δύση: --:-- / --:-- ║\\n╠═════════════
- ════════════════════╣\\n║  
- 🔗 okairos.gr                  ║\\n╚══════════
- ═══════════════════════╝\\
- n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
- tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
- airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
- st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+                        ║\\n║  🌡️  12°                        ║
+ \\n║  ──────────────────────
+ ───────  ║\\n║   Max      Min                  ║\\n║
+    12°      8°                  ║\\n║  ─────────
+ ────────────────────  ║\\n║  
+ 📋 Cloudy                     ║\\n║  ──────────
+ ───────────────────  ║\\n║  💨
+  Wind: Check widget          ║\\n║  ───────────
+ ──────────────────  ║\\n║  🌅 Α
+ νατολή/Δύση: --:-- / --:-- ║\\n╠═════════
+ ════════════════════════
+ ╣\\n║  🔗 okairos.gr                  ║\\n╚═══════
+ ════════════════════════
+ ══╝\\n\\n🌡️ Temperature Range: 8°C – 12°C\\n📋 Conditions
+ : Cloudy\\n\\n━━━━━━━━━━━━━━━━━━━━
+ ━━━━━━━━━━━\\n📍 Live Widget: https://tzoral.githu
+ b.io/okairos-ics-feed/\\n🔗 Widget API: https://www.okairos.gr/widget/lo
+ ader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Forecast: https://www.ok
+ airos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260122@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260122
 DTEND;VALUE=DATE:20260123
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 14°C Partly Cloudy
 DESCRIPTION:╔════════════════════
- ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ ═════════════╗\\n║  ☁️  ΚΑΙΡΟΣ - A
  THENS           ║\\n╠════════════════
  ═════════════════╣\\n║  Πέμπτη
-                         ║\\n║  ─────────────
- ────────────────  ║\\n║  📋 Clear   
-                    ║\\n║  ──────────────
- ───────────────  ║\\n║  💨 Wind: Check
-  widget          ║\\n║  ───────────────
- ──────────────  ║\\n║  🌅 Ανατολή
- /Δύση: --:-- / --:-- ║\\n╠═════════════
- ════════════════════╣\\n║  
- 🔗 okairos.gr                  ║\\n╚══════════
- ═══════════════════════╝\\
- n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
- tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
- airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
- st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+                         ║\\n║  🌡️  14°                        
+ ║\\n║  ─────────────────────
+ ────────  ║\\n║   Max      Min                  ║\\n
+ ║   14°      9°                  ║\\n║  ────────
+ ─────────────────────  ║\\n║
+   📋 Partly Cloudy              ║\\n║  ─────────
+ ────────────────────  ║\\n║  
+ 💨 Wind: Check widget          ║\\n║  ──────────
+ ───────────────────  ║\\n║  🌅
+  Ανατολή/Δύση: --:-- / --:-- ║\\n╠════════
+ ════════════════════════
+ ═╣\\n║  🔗 okairos.gr                  ║\\n╚══════
+ ════════════════════════
+ ═══╝\\n\\n🌡️ Temperature Range: 9°C – 14°C\\n📋 Conditi
+ ons: Partly Cloudy\\n\\n━━━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━━━\\n📍 Live Widget: https://
+ tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.okairos.
+ gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Forecast: ht
+ tps://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260123@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260123
 DTEND;VALUE=DATE:20260124
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 14°C Cloudy
 DESCRIPTION:╔════════════════════
- ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ ═════════════╗\\n║  ☁️  ΚΑΙΡΟΣ - A
  THENS           ║\\n╠════════════════
  ═════════════════╣\\n║  Παρασκ
- ευή                     ║\\n║  ────────────
- ─────────────────  ║\\n║  📋 Clear
-                       ║\\n║  ─────────────
- ────────────────  ║\\n║  💨 Wind: Ch
- eck widget          ║\\n║  ──────────────
- ───────────────  ║\\n║  🌅 Ανατο
- λή/Δύση: --:-- / --:-- ║\\n╠════════════
- ═════════════════════╣\\n║  
- 🔗 okairos.gr                  ║\\n╚══════════
- ═══════════════════════╝\\
- n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
- tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
- airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
- st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+ ευή                     ║\\n║  🌡️  14°                       
+  ║\\n║  ────────────────────
+ ─────────  ║\\n║   Max      Min                  ║
+ \\n║   14°      8°                  ║\\n║  ───────
+ ──────────────────────  ║\\n
+ ║  📋 Cloudy                     ║\\n║  ────────
+ ─────────────────────  ║\\n║
+   💨 Wind: Check widget          ║\\n║  ─────────
+ ────────────────────  ║\\n║  
+ 🌅 Ανατολή/Δύση: --:-- / --:-- ║\\n╠═══════
+ ════════════════════════
+ ══╣\\n║  🔗 okairos.gr                  ║\\n╚═════
+ ════════════════════════
+ ════╝\\n\\n🌡️ Temperature Range: 8°C – 14°C\\n📋 Cond
+ itions: Cloudy\\n\\n━━━━━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━━\\n📍 Live Widget: https://tzoral
+ .github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.okairos.gr/wid
+ get/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Forecast: https://
+ www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260124@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260124
 DTEND;VALUE=DATE:20260125
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 14°C Cloudy
 DESCRIPTION:╔════════════════════
- ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ ═════════════╗\\n║  ☁️  ΚΑΙΡΟΣ - A
  THENS           ║\\n╠════════════════
  ═════════════════╣\\n║  Σάββατ
- ο                       ║\\n║  ────────────
- ─────────────────  ║\\n║  📋 Clear
-                       ║\\n║  ─────────────
- ────────────────  ║\\n║  💨 Wind: Ch
- eck widget          ║\\n║  ──────────────
- ───────────────  ║\\n║  🌅 Ανατο
- λή/Δύση: --:-- / --:-- ║\\n╠════════════
- ═════════════════════╣\\n║  
- 🔗 okairos.gr                  ║\\n╚══════════
- ═══════════════════════╝\\
- n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
- tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
- airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
- st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+ ο                       ║\\n║  🌡️  14°                        
+ ║\\n║  ─────────────────────
+ ────────  ║\\n║   Max      Min                  ║\\n
+ ║   14°      8°                  ║\\n║  ────────
+ ─────────────────────  ║\\n║
+   📋 Cloudy                     ║\\n║  ─────────
+ ────────────────────  ║\\n║  
+ 💨 Wind: Check widget          ║\\n║  ──────────
+ ───────────────────  ║\\n║  🌅
+  Ανατολή/Δύση: --:-- / --:-- ║\\n╠════════
+ ════════════════════════
+ ═╣\\n║  🔗 okairos.gr                  ║\\n╚══════
+ ════════════════════════
+ ═══╝\\n\\n🌡️ Temperature Range: 8°C – 14°C\\n📋 Conditi
+ ons: Cloudy\\n\\n━━━━━━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━\\n📍 Live Widget: https://tzoral.gi
+ thub.io/okairos-ics-feed/\\n🔗 Widget API: https://www.okairos.gr/widget
+ /loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Forecast: https://www
+ .okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260125@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260125
 DTEND;VALUE=DATE:20260126
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 14°C Cloudy
 DESCRIPTION:╔════════════════════
- ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ ═════════════╗\\n║  ☁️  ΚΑΙΡΟΣ - A
  THENS           ║\\n╠════════════════
  ═════════════════╣\\n║  Κυριακ
- ή                       ║\\n║  ────────────
- ─────────────────  ║\\n║  📋 Clear
-                       ║\\n║  ─────────────
- ────────────────  ║\\n║  💨 Wind: Ch
- eck widget          ║\\n║  ──────────────
- ───────────────  ║\\n║  🌅 Ανατο
- λή/Δύση: --:-- / --:-- ║\\n╠════════════
- ═════════════════════╣\\n║  
- 🔗 okairos.gr                  ║\\n╚══════════
- ═══════════════════════╝\\
- n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
- tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
- airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
- st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+ ή                       ║\\n║  🌡️  14°                        
+ ║\\n║  ─────────────────────
+ ────────  ║\\n║   Max      Min                  ║\\n
+ ║   14°      8°                  ║\\n║  ────────
+ ─────────────────────  ║\\n║
+   📋 Cloudy                     ║\\n║  ─────────
+ ────────────────────  ║\\n║  
+ 💨 Wind: Check widget          ║\\n║  ──────────
+ ───────────────────  ║\\n║  🌅
+  Ανατολή/Δύση: --:-- / --:-- ║\\n╠════════
+ ════════════════════════
+ ═╣\\n║  🔗 okairos.gr                  ║\\n╚══════
+ ════════════════════════
+ ═══╝\\n\\n🌡️ Temperature Range: 8°C – 14°C\\n📋 Conditi
+ ons: Cloudy\\n\\n━━━━━━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━\\n📍 Live Widget: https://tzoral.gi
+ thub.io/okairos-ics-feed/\\n🔗 Widget API: https://www.okairos.gr/widget
+ /loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Forecast: https://www
+ .okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:weather-20260126@github-pages
-DTSTAMP:20260120T160355Z
+DTSTAMP:20260120T162024Z
 DTSTART;VALUE=DATE:20260126
 DTEND;VALUE=DATE:20260127
-SUMMARY:☀️ Clear
+SUMMARY:☁️ 14°C Cloudy
 DESCRIPTION:╔════════════════════
- ═════════════╗\\n║  ☀️  ΚΑΙΡΟΣ - A
+ ═════════════╗\\n║  ☁️  ΚΑΙΡΟΣ - A
  THENS           ║\\n╠════════════════
  ═════════════════╣\\n║  Δευτέρ
- α                       ║\\n║  ────────────
- ─────────────────  ║\\n║  📋 Clear
-                       ║\\n║  ─────────────
- ────────────────  ║\\n║  💨 Wind: Ch
- eck widget          ║\\n║  ──────────────
- ───────────────  ║\\n║  🌅 Ανατο
- λή/Δύση: --:-- / --:-- ║\\n╠════════════
- ═════════════════════╣\\n║  
- 🔗 okairos.gr                  ║\\n╚══════════
- ═══════════════════════╝\\
- n\\n📋 Conditions: Clear\\n\\n━━━━━━━━━━━━━━
- ━━━━━━━━━━━━━━━━━\\n📍 Live Widget: ht
- tps://tzoral.github.io/okairos-ics-feed/\\n🔗 Widget API: https://www.ok
- airos.gr/widget/loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Foreca
- st: https://www.okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
+ α                       ║\\n║  🌡️  14°                        
+ ║\\n║  ─────────────────────
+ ────────  ║\\n║   Max      Min                  ║\\n
+ ║   14°      8°                  ║\\n║  ────────
+ ─────────────────────  ║\\n║
+   📋 Cloudy                     ║\\n║  ─────────
+ ────────────────────  ║\\n║  
+ 💨 Wind: Check widget          ║\\n║  ──────────
+ ───────────────────  ║\\n║  🌅
+  Ανατολή/Δύση: --:-- / --:-- ║\\n╠════════
+ ════════════════════════
+ ═╣\\n║  🔗 okairos.gr                  ║\\n╚══════
+ ════════════════════════
+ ═══╝\\n\\n🌡️ Temperature Range: 8°C – 14°C\\n📋 Conditi
+ ons: Cloudy\\n\\n━━━━━━━━━━━━━━━━━━━
+ ━━━━━━━━━━━━\\n📍 Live Widget: https://tzoral.gi
+ thub.io/okairos-ics-feed/\\n🔗 Widget API: https://www.okairos.gr/widget
+ /loader/c5e081a87065ee7e6306a538dddd020b\\n🌐 Full Forecast: https://www
+ .okairos.gr/%CE%B1%CE%B8%CE%AE%CE%BD%CE%B1.html
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
