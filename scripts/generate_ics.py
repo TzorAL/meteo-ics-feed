@@ -139,6 +139,92 @@ def create_text_widget(config: Dict[str, Any], forecast: Dict[str, Any]) -> str:
     return "\\n".join(widget_lines)
 
 
+def create_text_widget_panel(config: Dict[str, Any], forecasts: List[Dict[str, Any]], days: int = 4) -> str:
+    """
+    Create a multi-day, horizontal, text widget similar to okairos.gr layout.
+
+    Each column shows: day label, icon, main temp, Max/Min, wind, sunrise/sunset.
+    """
+    loc = config["location_name"]
+    now = datetime.now().date()
+
+    day_names_greek = {
+        0: 'Δευτέρα', 1: 'Τρίτη', 2: 'Τετάρτη', 3: 'Πέμπτη',
+        4: 'Παρασκευή', 5: 'Σάββατο', 6: 'Κυριακή'
+    }
+
+    def day_label(d):
+        if d == now:
+            return "Σήμερα"
+        if d == now + timedelta(days=1):
+            return "Αύριο"
+        return day_names_greek.get(d.weekday(), d.strftime("%d/%m"))
+
+    def norm_temp(t: str) -> str:
+        # "13°C" -> "13°", "N/A" stays
+        if not t or t == "N/A":
+            return "N/A"
+        return t.replace("°C", "°").strip()
+
+    def col_lines(fc: Dict[str, Any]) -> List[str]:
+        d = fc["date"]
+        tmax = norm_temp(fc.get("temp_max", "N/A"))
+        tmin = norm_temp(fc.get("temp_min", "N/A"))
+        desc = fc.get("description", "") or ""
+        emoji = get_weather_emoji(desc, fc.get("temp_max", ""))
+
+        # "main" temp in the widget image is big; we'll use max as the prominent value.
+        main_temp = tmax if tmax != "N/A" else "N/A"
+
+        # Optional fields if you later scrape them:
+        wind = fc.get("wind") or "-- bf"
+        wind_dir = fc.get("wind_dir") or "—"
+        sunrise = fc.get("sunrise") or "--:--"
+        sunset = fc.get("sunset") or "--:--"
+
+        # Keep each line short; the panel will pad them.
+        return [
+            f"{day_label(d)}",
+            f"{emoji}",
+            f"{main_temp}",
+            f"Max/Min",
+            f"{tmax} {tmin}",
+            f"{wind}",
+            f"{wind_dir}",
+            f"{sunrise}",
+            f"{sunset}",
+        ]
+
+    cols = [col_lines(fc) for fc in forecasts[:days]]
+
+    # Panel formatting
+    # Tune width to your taste; 14–18 works well for 4 columns.
+    col_w = 16
+    header = f"καιρός {loc}".center(col_w * len(cols))
+
+    def pad(s: str) -> str:
+        s = s if s is not None else ""
+        # prevent overly long strings breaking alignment
+        if len(s) > col_w:
+            s = s[:col_w - 1] + "…"
+        return s.center(col_w)
+
+    # Build rows by zipping column line lists
+    rows = []
+    for r in range(len(cols[0])):
+        row = " ".join(pad(cols[c][r]) for c in range(len(cols)))
+        rows.append(row)
+
+    top = "┌" + "─" * (len(rows[0]) - 2) + "┐"
+    mid = "│" + header.center(len(rows[0]) - 2) + "│"
+    sep = "├" + "─" * (len(rows[0]) - 2) + "┤"
+    bottom = "└" + "─" * (len(rows[0]) - 2) + "┘"
+
+    body = "\n".join("│" + r[1:-1] + "│" if r.startswith(" ") else "│" + r + "│" for r in rows)
+
+    return "\n".join([top, mid, sep, body, bottom])
+
+
 def get_weather_emoji(description: str, temp: str = "") -> str:
     """Return appropriate weather emoji based on description."""
     desc_lower = description.lower()
@@ -321,10 +407,16 @@ def generate_ics(config: Dict[str, Any], forecasts: List[Dict[str, Any]]) -> str
         # Build description with text-based widget
         description_parts = []
         
-        # Add beautiful text widget at the top
-        text_widget = create_text_widget(config, forecast)
-        description_parts.append(text_widget)
-        description_parts.append("")  # Blank line
+        # Add beautiful multi-day widget at the top (only for first day's event)
+        if date_obj == forecasts[0]["date"]:
+            panel = create_text_widget_panel(config, forecasts, days=4)
+            description_parts.append(panel)
+            description_parts.append("")  # Blank line
+        else:
+            # Keep per-day compact widget for other days
+            text_widget = create_text_widget(config, forecast)
+            description_parts.append(text_widget)
+            description_parts.append("")  # Blank line
         
         # Add detailed information with emojis
         if temp_min != "N/A" and temp_max != "N/A":
