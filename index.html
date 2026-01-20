@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
@@ -28,6 +28,10 @@
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            min-height: calc(100vh - 40px);
         }
         
         .header {
@@ -207,6 +211,9 @@
             font-size: 12px;
             color: #666;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-top: auto;
         }
         
         .section-title {
@@ -302,6 +309,7 @@
         a:hover {
             text-decoration: underline;
         }
+        @media (max-width: 700px) {
             .container {
                 border-radius: 0;
                 box-shadow: none;
@@ -309,6 +317,7 @@
             
             body {
                 min-height: 100dvh;
+                align-items: flex-start;
             }
             
             .calendar-grid {
@@ -347,34 +356,6 @@
                 <strong>🌍 Want a different city or district?</strong><br>
                 <a href="https://github.com/tzoral/okairos-ics-feed/issues/new" target="_blank" style="color: #667eea;">Open a GitHub issue</a> to request a new location! I'll add it to the feed if it's available on okairos.gr.
             </div>
-                <div class="calendar-item">
-                    <strong>Kozani (Κοζάνη)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/kozani.ics</div>
-                </div>
-                <div class="calendar-item">
-                    <strong>🏝️ Mytilene (Μυτιλήνη)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/mytilene.ics</div>
-                </div>
-                <div class="calendar-item">
-                    <strong>🏝️ Limnos (Λήμνος)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/limnos.ics</div>
-                </div>
-                <div class="calendar-item">
-                    <strong>🏝️ Samos (Σάμος)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/samos.ics</div>
-                </div>
-                <div class="calendar-item">
-                    <strong>🏝️ Chios (Χίος)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/chios.ics</div>
-                </div>
-                <div class="calendar-item">
-                    <strong>🏝️ Corfu (Κέρκυρα)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/corfu.ics</div>
-                </div>
-                <div class="calendar-item">
-                    <strong>🏝️ Kefalonia (Κεφαλλονιά)</strong>
-                    <div class="code-block" style="margin-top: 5px; font-size: 10px;">https://tzoral.github.io/okairos-ics-feed/feeds/kefalonia.ics</div>
-                </div>
             </div>
             
             <h2 class="section-title">🚀 How to Subscribe</h2>
@@ -421,9 +402,6 @@
             </div>
         </div>
         
-        <div class="footer">
-            <p>📅 Weather Calendar Feed — Powered by <a href="https://www.okairos.gr/" target="_blank" style="color: #667eea;">okairos.gr</a></p>
-        </div>
     </div>
 </body>
 </html>
