@@ -5,7 +5,7 @@ Automatically generate and maintain a weather forecast calendar for Athens using
 ## What It Does
 
 - 📅 Daily weather calendar with forecasts from okairos.gr for Athens
-- 🔄 Automatically updates every morning via GitHub Actions (06:00 Athens time)
+- 🔄 Automatically updates 3 times daily via GitHub Actions (06:00, 12:00, 18:00 Athens time)
 - 📱 Syncs with Google Calendar, Apple Calendar, Outlook, and all calendar apps
 - ✅ RFC 5545 compliant iCalendar format
 - 🎨 Professional GitHub Pages site with live weather widget
@@ -34,7 +34,7 @@ Users can [open a GitHub issue](https://github.com/tzoral/okairos-ics-feed/issue
 **Outlook:**
 - Add Calendar → Subscribe from web → Paste URL
 
-**Auto-updates:** Calendar apps check the URL every 24 hours. GitHub Actions updates the feed every morning at 06:00 Athens time.
+**Auto-updates:** Calendar apps check the URL every 24 hours. GitHub Actions updates the feed three times daily at 06:00, 12:00, and 18:00 Athens time.
 
 ## Add More Cities (Advanced)
 
@@ -71,14 +71,14 @@ To add more Greek cities:
 ## How It Works
 
 ```
-06:00 Athens time → GitHub Actions runs
-                        ↓
-                  Fetches weather from okairos.gr
-                        ↓
-                  Generates feeds/athens.ics
-                        ↓
-                  Commits if changed
-                        ↓
+06:00/12:00/18:00 Athens time → GitHub Actions runs
+                                     ↓
+                              Fetches weather from okairos.gr
+                                     ↓
+                              Generates feeds/athens.ics
+                                     ↓
+                              Commits if changed
+                                     ↓
 Calendar apps (every ~24h) → Fetch new data → Update events
 ```
 

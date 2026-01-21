@@ -2,10 +2,29 @@
 
 import sys
 import re
+import time
 from datetime import datetime, timedelta
-from urllib.request import urlopen
+from urllib.request import urlopen, Request
 from urllib.error import URLError
 from typing import Dict, Any, List, Optional
+
+
+def fetch_with_retry(url: str, max_retries: int = 3, timeout: int = 10) -> str:
+    """Fetch URL with retry logic and proper User-Agent header."""
+    for attempt in range(max_retries):
+        try:
+            req = Request(url, headers={
+                'User-Agent': 'WeatherCalendar/1.0 (https://github.com/tzoral/meteo-ics-feed)'
+            })
+            with urlopen(req, timeout=timeout) as response:
+                return response.read().decode("utf-8", errors="replace")
+        except URLError as e:
+            if attempt < max_retries - 1:
+                wait_time = 2 ** attempt  # Exponential backoff: 1s, 2s, 4s
+                print(f"Attempt {attempt + 1} failed: {e}. Retrying in {wait_time}s...", file=sys.stderr)
+                time.sleep(wait_time)
+            else:
+                raise
 
 
 def fetch_forecast_from_widget(widget_id: str) -> List[Dict[str, Any]]:
@@ -16,10 +35,11 @@ def fetch_forecast_from_widget(widget_id: str) -> List[Dict[str, Any]]:
     This parser is based on the typical HTML structure of that response.
     """
     widget_url = f"https://www.okairos.gr/widget/get/{widget_id}"
+    print(f"Fetching widget data from: {widget_url}", file=sys.stderr)
 
     try:
-        with urlopen(widget_url, timeout=10) as response:
-            html = response.read().decode("utf-8", errors="replace")
+        html = fetch_with_retry(widget_url)
+        print(f"Successfully fetched {len(html)} bytes from widget", file=sys.stderr)
 
         today = datetime.now().date()
 
@@ -142,6 +162,8 @@ def fetch_forecast_from_widget(widget_id: str) -> List[Dict[str, Any]]:
         )
         if num_days == 10**9:
             num_days = 0
+        
+        print(f"Parsed {num_days} days from widget (main_temps={len(main_temps)}, max={len(max_temps)}, min={len(min_temps)})", file=sys.stderr)
 
         forecasts: List[Dict[str, Any]] = []
         for i in range(num_days):
@@ -179,14 +201,16 @@ def fetch_forecast_from_widget(widget_id: str) -> List[Dict[str, Any]]:
             )
 
         if forecasts:
-            print(f"  Parsed {min(num_days, 7)} days from widget API", file=sys.stderr)
+            print(f"  ✓ Parsed {min(num_days, 7)} days from widget API\", file=sys.stderr)
+            for i, fc in enumerate(forecasts[:3]):  # Log first 3 days
+                print(f"    Day {i}: {fc['date']} - {fc['temp_max']}/{fc['temp_min']}, {fc['description']}\", file=sys.stderr)
             return forecasts
 
         # If parsing got nothing, fall through to fallback
         raise ValueError("No days parsed from widget HTML")
 
     except Exception as e:
-        print(f"Error fetching/parsing widget data: {e}", file=sys.stderr)
+        print(f\"⚠️  Error fetching/parsing widget data: {e}\", file=sys.stderr)
         today = datetime.now().date()
         return [
             {
@@ -217,8 +241,7 @@ def fetch_forecast(location_url: str, widget_id: Optional[str] = None) -> List[D
 
     # Fallback: basic scrape from location page (may not yield per-day data)
     try:
-        with urlopen(location_url, timeout=10) as response:
-            html = response.read().decode("utf-8", errors="replace")
+        html = fetch_with_retry(location_url)
 
         temp_min = "N/A"
         temp_max = "N/A"

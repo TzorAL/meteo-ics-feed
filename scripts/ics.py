@@ -40,12 +40,14 @@ def generate_ics(config: Dict[str, Any], forecasts: List[Dict[str, Any]]) -> str
         dtstamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         ics_lines.append(f"DTSTAMP:{dtstamp}")
         
-        # SEQUENCE based on hour to force calendar updates (increments each hour)
-        sequence = int(datetime.now(timezone.utc).strftime("%Y%m%d%H"))
-        ics_lines.append(f"SEQUENCE:{sequence}")
-        
-        # LAST-MODIFIED to help calendar clients detect changes
+        # LAST-MODIFIED helps calendar clients know when to refresh
         ics_lines.append(f"LAST-MODIFIED:{dtstamp}")
+        
+        # SEQUENCE: Use day of year * 100 + hour to always increment
+        # Example: Jan 21, 4am = 2104, Jan 21, 10am = 2110, Jan 22, 4am = 2204
+        now_utc = datetime.now(timezone.utc)
+        sequence = now_utc.timetuple().tm_yday * 100 + now_utc.hour
+        ics_lines.append(f"SEQUENCE:{sequence}")
 
         # DTSTART / DTEND
         if config["event_time"].strip():

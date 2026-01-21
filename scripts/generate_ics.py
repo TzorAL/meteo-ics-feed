@@ -21,6 +21,7 @@ Usage:
 import json
 import sys
 from pathlib import Path
+from datetime import datetime
 
 from config import load_config
 from weather import fetch_forecast
@@ -29,6 +30,7 @@ from ics import generate_ics
 
 def main() -> None:
     """Main entry point."""
+    print(f"\n=== Weather ICS Generation Started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===", file=sys.stderr)
     locations_path = Path(__file__).parent.parent / "locations.json"
 
     if locations_path.exists():
@@ -55,12 +57,31 @@ def main() -> None:
 
             try:
                 forecasts = fetch_forecast(config["location_url"], config.get("widget_id"))
+                print(f"  📊 Fetched {len(forecasts)} days of forecast data", file=sys.stderr)
+                
                 ics_content = generate_ics(config, forecasts)
 
                 output_path = Path(__file__).parent.parent / location["filename"]
-                with open(output_path, "w", encoding="utf-8", newline="") as f_out:
-                    f_out.write(ics_content)
-                print(f"  ✓ Successfully wrote {location['filename']}", file=sys.stderr)
+                
+                # Check if content actually changed to avoid unnecessary commits
+                content_changed = True
+                if output_path.exists():
+                    with open(output_path, "r", encoding="utf-8") as f_in:
+                        existing_content = f_in.read()
+                        # Compare ignoring DTSTAMP/LAST-MODIFIED/SEQUENCE which always change
+                        existing_lines = [l for l in existing_content.split('\n') if not l.startswith(('DTSTAMP:', 'LAST-MODIFIED:', 'SEQUENCE:'))]
+                        new_lines = [l for l in ics_content.split('\n') if not l.startswith(('DTSTAMP:', 'LAST-MODIFIED:', 'SEQUENCE:'))]
+                        content_changed = existing_lines != new_lines
+                
+                if content_changed:
+                    with open(output_path, "w", encoding="utf-8", newline="") as f_out:
+                        f_out.write(ics_content)
+                    print(f"  ✓ Successfully wrote {location['filename']} (content updated)", file=sys.stderr)
+                else:
+                    # Still write to update timestamps
+                    with open(output_path, "w", encoding="utf-8", newline="") as f_out:
+                        f_out.write(ics_content)
+                    print(f"  ✓ Updated timestamps in {location['filename']} (no forecast changes)", file=sys.stderr)
             except Exception as e:
                 print(f"  ✗ Error generating {location['name']}: {e}", file=sys.stderr)
 
@@ -82,6 +103,8 @@ def main() -> None:
         except IOError as e:
             print(f"Error writing ICS file: {e}", file=sys.stderr)
             sys.exit(1)
+    
+    print(f"\n=== Generation Complete at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===", file=sys.stderr)
 
 
 if __name__ == "__main__":
